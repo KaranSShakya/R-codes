@@ -10,10 +10,10 @@ editor_options:
 
 ### R - Codes: Table of Content
 
-1. Base R Analysis
+1. [Base R Analysis](base_r.html)
 2. [Data Manipulation](data_manipulation.html)
 3. Data Visualization
-4. Base Statistics
-5. Regression
+4. Statistics
+5. [Regression](regression.html)
 6. Machine Learning
 7. [GIT](git.html)

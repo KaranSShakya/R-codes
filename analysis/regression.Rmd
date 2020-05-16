@@ -1,0 +1,15 @@
+---
+title: "Regression"
+site: workflowr::wflow_site
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+[Home](index.html)
+
+***
+
+##Panel Regression
