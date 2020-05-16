@@ -8,4 +8,12 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website. Test
+### R - Codes: Table of Content
+
+1. Base R Analysis
+2. [Data Manipulation](data_manipulation.html)
+3. Data Visualization
+4. Base Statistics
+5. Regression
+6. Machine Learning
+7. [GIT](git.html)
