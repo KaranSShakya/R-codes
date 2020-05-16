@@ -20,19 +20,23 @@ editor_options:
 
 * Create a new project on R-Studio through **Version Control**. Click on 'GIT' and paste the link.
 
+**workflowr** needs to be installed through the console.
 ```{r eval=F, echo=T}
 library(workflowr)
 ```
-**workflowr** needs to be installed through the console.
+
+Register your personal information.
 ```{r eval=F, echo=T}
 wflow_git_commit(user.name="KaranSShakya", user.email="email.gmail.com")
 ```
-Register your personal information.
+
+This code builds the workflowr folder in your existing folder or directory.
 ```{r eval=F, echo=T}
 wflow_start("~/Desktop/working-directory", existing = TRUE)
 ```
-This code builds the workflowr folder in your existing folder or directory.
 
 ***
+
+
 
 

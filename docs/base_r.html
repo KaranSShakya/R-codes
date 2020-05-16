@@ -11,7 +11,7 @@
 
 
 
-<title>GIT</title>
+<title>Base R Analysis</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -376,7 +376,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">GIT</h1>
+<h1 class="title toc-ignore">Base R Analysis</h1>
 
 </div>
 
@@ -425,7 +425,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -512,9 +512,12 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
+Untracked files:
+    Untracked:  analysis/base_r.Rmd
+
 Unstaged changes:
     Modified:   analysis/git.Rmd
-    Modified:   base_r.Rmd
+    Deleted:    base_r.Rmd
 
 </code></pre>
 <p>
@@ -527,88 +530,66 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/git.Rmd</code>) and HTML (<code>docs/git.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/KaranSShakya/R-codes/blob/d9274856c7be1d933f34de7cc8e36cbb106ca738/analysis/git.Rmd" target="_blank">d927485</a>
-</td>
-<td>
-KaranSShakya
-</td>
-<td>
-2020-05-16
-</td>
-<td>
-GIT to R-Studio commits
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/KaranSShakya/R-codes/d9274856c7be1d933f34de7cc8e36cbb106ca738/docs/git.html" target="_blank">d927485</a>
-</td>
-<td>
-KaranSShakya
-</td>
-<td>
-2020-05-16
-</td>
-<td>
-GIT to R-Studio commits
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
 </div>
 <p><a href="index.html">Home</a></p>
 <hr />
-<div id="connecting-r-studio-to-git" class="section level3">
-<h3>Connecting R-Studio to GIT</h3>
-<ul>
-<li><p>Download GIT in your computer.</p></li>
-<li><p>Create a repository at GIT. Click on ‘Clone or Download’ and copy the link.</p></li>
-<li><p>Create a new project on R-Studio through <strong>Version Control</strong>. Click on ‘GIT’ and paste the link.</p></li>
-</ul>
-<p><strong>workflowr</strong> needs to be installed through the console.</p>
-<pre class="r"><code>library(workflowr)</code></pre>
-<p>Register your personal information.</p>
-<pre class="r"><code>wflow_git_commit(user.name=&quot;KaranSShakya&quot;, user.email=&quot;email.gmail.com&quot;)</code></pre>
-<p>This code builds the workflowr folder in your existing folder or directory.</p>
-<pre class="r"><code>wflow_start(&quot;~/Desktop/working-directory&quot;, existing = TRUE)</code></pre>
+<div id="observing-columns" class="section level3">
+<h3>Observing Columns</h3>
+<p><strong>murders</strong> is the dataset. To observe the column types,</p>
+<pre class="r"><code>str(murders)</code></pre>
+<pre><code>&#39;data.frame&#39;:   51 obs. of  5 variables:
+ $ state     : chr  &quot;Alabama&quot; &quot;Alaska&quot; &quot;Arizona&quot; &quot;Arkansas&quot; ...
+ $ abb       : chr  &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; ...
+ $ region    : Factor w/ 4 levels &quot;Northeast&quot;,&quot;South&quot;,..: 2 4 4 2 4 4 1 2 2 2 ...
+ $ population: num  4779736 710231 6392017 2915918 37253956 ...
+ $ total     : num  135 19 232 93 1257 ...</code></pre>
+<p>To observe all column numbers. Easy to see which column is which number.</p>
+<pre class="r"><code>names(murders)</code></pre>
+<pre><code>[1] &quot;state&quot;      &quot;abb&quot;        &quot;region&quot;     &quot;population&quot; &quot;total&quot;     </code></pre>
+<p>To observe the first 5 data data of a column.</p>
+<pre class="r"><code>murders$state[1:5]</code></pre>
+<pre><code>[1] &quot;Alabama&quot;    &quot;Alaska&quot;     &quot;Arizona&quot;    &quot;Arkansas&quot;   &quot;California&quot;</code></pre>
+<hr />
+<hr />
+</div>
+<div id="generating-sequences" class="section level3">
+<h3>Generating sequences</h3>
+<p>Normal sequence</p>
+<pre class="r"><code>x &lt;- seq(1:10)
+x</code></pre>
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p>Odd numbers only</p>
+<pre class="r"><code>x.odd &lt;- seq(1,10,2)
+x.odd</code></pre>
+<pre><code>[1] 1 3 5 7 9</code></pre>
+<p>Even distribution between ranges. Example: 3 equal division between 1 and 10.</p>
+<pre class="r"><code>y.divide &lt;- seq(1,10, length.out = 3)
+y.divide</code></pre>
+<pre><code>[1]  1.0  5.5 10.0</code></pre>
+<hr />
+</div>
+<div id="data-frames-vectors" class="section level3">
+<h3>Data Frames (Vectors)</h3>
+<p>Associating vectors only</p>
+<pre class="r"><code>city &lt;- c(&quot;Tokyo&quot;, &quot;Lile&quot;, &quot;Dover&quot;)
+area &lt;- c(10, 8, 13)
+names(area) &lt;- city
+area</code></pre>
+<pre><code>Tokyo  Lile Dover 
+   10     8    13 </code></pre>
+<p>Creating Data Frames. Extra column created because of previous code.</p>
+<pre class="r"><code>data &lt;- data.frame(name=city, value=area)
+data</code></pre>
+<pre><code>       name value
+Tokyo Tokyo    10
+Lile   Lile     8
+Dover Dover    13</code></pre>
 <hr />
 <br>
 <p>
@@ -633,15 +614,25 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] workflowr_1.6.2
+ [1] dslabs_0.7.3    forcats_0.5.0   stringr_1.4.0   dplyr_0.8.5    
+ [5] purrr_0.3.4     readr_1.3.1     tidyr_1.0.3     tibble_3.0.1   
+ [9] ggplot2_3.3.0   tidyverse_1.3.0 workflowr_1.6.2
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.4.6    rprojroot_1.3-2 digest_0.6.25   later_1.0.0    
- [5] R6_2.4.1        backports_1.1.6 git2r_0.27.1    magrittr_1.5   
- [9] evaluate_0.14   stringi_1.4.6   rlang_0.4.6     fs_1.4.1       
-[13] promises_1.1.0  whisker_0.4     rmarkdown_2.1   tools_4.0.0    
-[17] stringr_1.4.0   glue_1.4.1      httpuv_1.5.2    xfun_0.13      
-[21] yaml_2.2.1      compiler_4.0.0  htmltools_0.4.0 knitr_1.28     </code></pre>
+ [1] tidyselect_1.1.0 xfun_0.13        haven_2.2.0      lattice_0.20-41 
+ [5] colorspace_1.4-1 vctrs_0.3.0      generics_0.0.2   htmltools_0.4.0 
+ [9] yaml_2.2.1       rlang_0.4.6      later_1.0.0      pillar_1.4.4    
+[13] withr_2.2.0      glue_1.4.1       DBI_1.1.0        dbplyr_1.4.3    
+[17] modelr_0.1.7     readxl_1.3.1     lifecycle_0.2.0  munsell_0.5.0   
+[21] gtable_0.3.0     cellranger_1.1.0 rvest_0.3.5      evaluate_0.14   
+[25] knitr_1.28       httpuv_1.5.2     fansi_0.4.1      broom_0.5.6     
+[29] Rcpp_1.0.4.6     promises_1.1.0   backports_1.1.6  scales_1.1.1    
+[33] jsonlite_1.6.1   fs_1.4.1         hms_0.5.3        digest_0.6.25   
+[37] stringi_1.4.6    grid_4.0.0       rprojroot_1.3-2  cli_2.0.2       
+[41] tools_4.0.0      magrittr_1.5     crayon_1.3.4     pkgconfig_2.0.3 
+[45] ellipsis_0.3.0   xml2_1.3.2       reprex_0.3.0     lubridate_1.7.8 
+[49] rstudioapi_0.11  assertthat_0.2.1 rmarkdown_2.1    httr_1.4.1      
+[53] R6_2.4.1         nlme_3.1-147     git2r_0.27.1     compiler_4.0.0  </code></pre>
 </div>
 </div>
 

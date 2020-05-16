@@ -1,0 +1,66 @@
+---
+title: "Base R Analysis"
+site: workflowr::wflow_site
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+[Home](index.html)
+
+```{r eval=T, echo=F, message=F}
+library(tidyverse)
+library(dslabs)
+```
+***
+### Observing Columns ###
+**murders** is the dataset. To observe the column types,
+```{r eval=T, echo=T}
+str(murders)
+```
+To observe all column numbers. Easy to see which column is which number.
+```{r eval=T, echo=T}
+names(murders)
+```
+To observe the first 5 data data of a column.
+```{r eval=T, echo=T}
+murders$state[1:5]
+```
+***
+
+***
+### Generating sequences ###
+Normal sequence
+```{r eval=T, echo=T}
+x <- seq(1:10)
+x
+```
+Odd numbers only
+```{r eval=T, echo=T}
+x.odd <- seq(1,10,2)
+x.odd
+```
+Even distribution between ranges. Example: 3 equal division between 1 and 10.
+```{r eval=T, echo=T}
+y.divide <- seq(1,10, length.out = 3)
+y.divide
+```
+***
+### Data Frames (Vectors) ###
+Associating vectors only
+```{r eval=T, echo=T}
+city <- c("Tokyo", "Lile", "Dover")
+area <- c(10, 8, 13)
+names(area) <- city
+area
+```
+Creating Data Frames. Extra column created because of previous code.
+```{r eval=T, echo=T}
+data <- data.frame(name=city, value=area)
+data
+```
+
+***
+
