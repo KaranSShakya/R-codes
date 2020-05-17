@@ -1,0 +1,68 @@
+---
+title: "Data Visualization"
+site: workflowr::wflow_site
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+[Home](index.html)
+
+***
+### Line Plot ###
+```{r eval=T, echo=F, warning=F}
+library(readxl)
+library(ggplot2)
+LAC <- read_excel("data/honors_lac.xlsx", 
+                  sheet = "Latin America & Caribbean")
+```
+
+```{r eval=T, echo=T}
+ggplot(LAC, aes(x=Year))+
+  geom_line(aes(y=Yield_r), color="Green3", size=1)+
+  geom_line(aes(y=Area_r), color="Green3", linetype="dashed", size=1)+
+  labs(title="Latin America & Caribbean", x="Year", y="Relative Change")+
+  theme_bw(base_size = 12)+
+  coord_cartesian(ylim=c(80, 140))+
+  scale_y_continuous(breaks = seq(80, 140, 10))+
+  scale_x_continuous(breaks = seq(2002, 2016, 2))+
+  geom_segment(aes(x=2002, y=100, xend=2016, yend=100), size=0.5)
+```
+
+***
+### Scatterplot ###
+```{r eval=T, echo=F, message=F, warning=F}
+library(tidyverse)
+library(dslabs)
+library(readr)
+
+data0 <- read_csv("data/honors_baseline.csv")
+
+data1 <- data0 %>% 
+  select(2,3,5,6, 13)
+data2 <- data1 %>%
+  filter(Year=="2016")
+```
+
+```{r eval=T, echo=T, message=F, warning=F}
+ggplot(data2, aes(x=log(GDP_capita), y=log(Fertilizer_use), color=Region))+
+  geom_point()+
+  geom_text(aes(label=Country), hjust=1, vjust=0)+
+  labs(title="Fertilizer Use (2016)", x="Log(GDP per Capita)", y="Log(Fertilizer Use)")+
+  theme_classic(base_size = 12)+
+  coord_cartesian(xlim=c(5.5, 11.2))
+```
+
+***
+
+### GG-Arrange ###
+Need library **ggplot2**. Where a, b, c... are individuals ggplots (a <- ggplot...)
+```{r eval=F, echo=T}
+ggarrange(a,b,c,d,e,f,g,
+          ncol = 2, nrow = 4)
+```
+
+***
+

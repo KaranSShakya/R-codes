@@ -11,7 +11,7 @@
 
 
 
-<title>Regression</title>
+<title>Data Visualization</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -376,7 +376,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Regression</h1>
+<h1 class="title toc-ignore">Data Visualization</h1>
 
 </div>
 
@@ -425,7 +425,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -516,6 +516,7 @@ Untracked files:
     Untracked:  analysis/data_visualization.Rmd
     Untracked:  data/.DS_Store
     Untracked:  data/honors_baseline.csv
+    Untracked:  data/honors_lac.xlsx
 
 Unstaged changes:
     Modified:   analysis/index.Rmd
@@ -532,136 +533,45 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/regression.Rmd</code>) and HTML (<code>docs/regression.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/KaranSShakya/R-codes/blob/5adafbcb873e9deecc1ed30535f237f2d2e3e9c4/analysis/regression.Rmd" target="_blank">5adafbc</a>
-</td>
-<td>
-KaranSShakya
-</td>
-<td>
-2020-05-16
-</td>
-<td>
-panel regression + numeric/character
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/KaranSShakya/R-codes/5adafbcb873e9deecc1ed30535f237f2d2e3e9c4/docs/regression.html" target="_blank">5adafbc</a>
-</td>
-<td>
-KaranSShakya
-</td>
-<td>
-2020-05-16
-</td>
-<td>
-panel regression + numeric/character
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/KaranSShakya/R-codes/blob/3ec85bd0257887b13d85752b9d200dc16fbc5563/analysis/regression.Rmd" target="_blank">3ec85bd</a>
-</td>
-<td>
-KaranSShakya
-</td>
-<td>
-2020-05-16
-</td>
-<td>
-building html pages and links
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/KaranSShakya/R-codes/3ec85bd0257887b13d85752b9d200dc16fbc5563/docs/regression.html" target="_blank">3ec85bd</a>
-</td>
-<td>
-KaranSShakya
-</td>
-<td>
-2020-05-16
-</td>
-<td>
-building html pages and links
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
 </div>
 <p><a href="index.html">Home</a></p>
 <hr />
-<div id="panel-regression" class="section level3">
-<h3>Panel Regression</h3>
-<p>Library: stargazer, knitr, sandwitch, lmtest, AER, forecast, plm. These contain more than necessary packages required for panel regression. The first step is to make your data frame into a panel form.</p>
-<pre class="r"><code>panel &lt;- pdata.frame(data, index=c(&quot;Country&quot;, &quot;Year&quot;))</code></pre>
-<p>For fixed effects model (two-way - country and year)</p>
-<pre class="r"><code>fixed.effect &lt;- plm(y~x1+I(x1^2)+x2+x3, 
-                 data=panel, model=&quot;within&quot;, effect = &quot;twoway&quot;)</code></pre>
-<p>For random effects model</p>
-<pre class="r"><code>random.effect &lt;- plm(y~x1+I(x1^2)+x2+x3, 
-                 data=panel, model=&quot;random&quot;)</code></pre>
-<p>To view these models without and with standard error.</p>
-<pre class="r"><code>stargazer(random.effect, type=&#39;text&#39;)
-stargazer(coeftest(random.effect, vcovHC), type=&quot;text&quot;)</code></pre>
-<p>Hausman test to verify if to use fixed effect or random effect. If p &lt; 0.05, use fixed effects model.</p>
-<pre class="r"><code>phtest(fixed.effect, random.effect)</code></pre>
+<div id="line-plot" class="section level3">
+<h3>Line Plot</h3>
+<pre class="r"><code>ggplot(LAC, aes(x=Year))+
+  geom_line(aes(y=Yield_r), color=&quot;Green3&quot;, size=1)+
+  geom_line(aes(y=Area_r), color=&quot;Green3&quot;, linetype=&quot;dashed&quot;, size=1)+
+  labs(title=&quot;Latin America &amp; Caribbean&quot;, x=&quot;Year&quot;, y=&quot;Relative Change&quot;)+
+  theme_bw(base_size = 12)+
+  coord_cartesian(ylim=c(80, 140))+
+  scale_y_continuous(breaks = seq(80, 140, 10))+
+  scale_x_continuous(breaks = seq(2002, 2016, 2))+
+  geom_segment(aes(x=2002, y=100, xend=2016, yend=100), size=0.5)</code></pre>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
 <hr />
 </div>
-<div id="arima-forecast" class="section level3">
-<h3>ARIMA Forecast</h3>
-<p>First convert the dataset into time-series form. We can see this through the plot().</p>
-<pre class="r"><code>temp.ts &lt;- ts(temp, start=1998, end=2017, frequency = 1)
-plot(temp.ts)</code></pre>
-<p>The basic steps for the ARIMA prediction are as follows. Do not know the detail, but this looks at historical data to predict future trends. It is one variable dependent, meaning interactions are harder to integrate.</p>
-<pre class="r"><code>arima.temp &lt;- arima(temp.ts, order=c(3,1,1))
-summary(arima.temp)
-plot(forecast(arima.temp, 5))
-forecast(arima.temp, 5)</code></pre>
+<div id="scatterplot" class="section level3">
+<h3>Scatterplot</h3>
+<pre class="r"><code>ggplot(data2, aes(x=log(GDP_capita), y=log(Fertilizer_use), color=Region))+
+  geom_point()+
+  geom_text(aes(label=Country), hjust=1, vjust=0)+
+  labs(title=&quot;Fertilizer Use (2016)&quot;, x=&quot;Log(GDP per Capita)&quot;, y=&quot;Log(Fertilizer Use)&quot;)+
+  theme_classic(base_size = 12)+
+  coord_cartesian(xlim=c(5.5, 11.2))</code></pre>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="gg-arrange" class="section level3">
+<h3>GG-Arrange</h3>
+<p>Need library <strong>ggplot2</strong>. Where a, b, c… are individuals ggplots (a &lt;- ggplot…)</p>
+<pre class="r"><code>ggarrange(a,b,c,d,e,f,g,
+          ncol = 2, nrow = 4)</code></pre>
 <hr />
 <br>
 <p>
@@ -686,15 +596,26 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] workflowr_1.6.2
+ [1] dslabs_0.7.3    forcats_0.5.0   stringr_1.4.0   dplyr_0.8.5    
+ [5] purrr_0.3.4     readr_1.3.1     tidyr_1.0.3     tibble_3.0.1   
+ [9] tidyverse_1.3.0 ggplot2_3.3.0   readxl_1.3.1    workflowr_1.6.2
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.4.6    rprojroot_1.3-2 digest_0.6.25   later_1.0.0    
- [5] R6_2.4.1        backports_1.1.6 git2r_0.27.1    magrittr_1.5   
- [9] evaluate_0.14   stringi_1.4.6   rlang_0.4.6     fs_1.4.1       
-[13] promises_1.1.0  whisker_0.4     rmarkdown_2.1   tools_4.0.0    
-[17] stringr_1.4.0   glue_1.4.1      httpuv_1.5.2    xfun_0.13      
-[21] yaml_2.2.1      compiler_4.0.0  htmltools_0.4.0 knitr_1.28     </code></pre>
+ [1] tidyselect_1.1.0 xfun_0.13        haven_2.2.0      lattice_0.20-41 
+ [5] colorspace_1.4-1 vctrs_0.3.0      generics_0.0.2   htmltools_0.4.0 
+ [9] yaml_2.2.1       rlang_0.4.6      later_1.0.0      pillar_1.4.4    
+[13] glue_1.4.1       withr_2.2.0      DBI_1.1.0        dbplyr_1.4.3    
+[17] modelr_0.1.7     lifecycle_0.2.0  munsell_0.5.0    gtable_0.3.0    
+[21] cellranger_1.1.0 rvest_0.3.5      evaluate_0.14    labeling_0.3    
+[25] knitr_1.28       httpuv_1.5.2     fansi_0.4.1      broom_0.5.6     
+[29] Rcpp_1.0.4.6     promises_1.1.0   scales_1.1.1     backports_1.1.6 
+[33] jsonlite_1.6.1   farver_2.0.3     fs_1.4.1         hms_0.5.3       
+[37] digest_0.6.25    stringi_1.4.6    grid_4.0.0       rprojroot_1.3-2 
+[41] cli_2.0.2        tools_4.0.0      magrittr_1.5     crayon_1.3.4    
+[45] pkgconfig_2.0.3  ellipsis_0.3.0   xml2_1.3.2       reprex_0.3.0    
+[49] lubridate_1.7.8  rstudioapi_0.11  assertthat_0.2.1 rmarkdown_2.1   
+[53] httr_1.4.1       R6_2.4.1         nlme_3.1-147     git2r_0.27.1    
+[57] compiler_4.0.0  </code></pre>
 </div>
 </div>
 

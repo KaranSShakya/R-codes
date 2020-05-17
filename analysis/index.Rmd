@@ -12,7 +12,7 @@ editor_options:
 
 1. [Base R Analysis](base_r.html)
 2. [Data Manipulation](data_manipulation.html)
-3. Data Visualization
+3. [Data Visualization](data_visualization.html)
 4. Statistics
 5. [Regression](regression.html)
 6. Machine Learning

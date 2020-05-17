@@ -37,10 +37,25 @@ Hausman test to verify if to use fixed effect or random effect. If p < 0.05, use
 ```{r eval=F, echo=T}
 phtest(fixed.effect, random.effect)
 ```
+
 ***
 
+### ARIMA Forecast ###
+First convert the dataset into time-series form. We can see this through the plot().
+```{r eval=F, echo=T}
+temp.ts <- ts(temp, start=1998, end=2017, frequency = 1)
+plot(temp.ts)
+```
+The basic steps for the ARIMA prediction are as follows. Do not know the detail, but this looks at historical data to predict future trends. It is one variable dependent, meaning interactions are harder to integrate. 
 
+```{r eval=F, echo=T}
+arima.temp <- arima(temp.ts, order=c(3,1,1))
+summary(arima.temp)
+plot(forecast(arima.temp, 5))
+forecast(arima.temp, 5)
+```
 
+***
 
 
 
