@@ -12,4 +12,36 @@ editor_options:
 
 ***
 
-##Panel Regression
+### Panel Regression ###
+Library: stargazer, knitr, sandwitch, lmtest, AER, forecast, plm. These contain more than necessary packages required for panel regression.
+The first step is to make your data frame into a panel form.
+```{r eval=F, echo=T}
+panel <- pdata.frame(data, index=c("Country", "Year"))
+```
+For fixed effects model (two-way - country and year)
+```{r eval=F, echo=T}
+fixed.effect <- plm(y~x1+I(x1^2)+x2+x3, 
+                 data=panel, model="within", effect = "twoway")
+```
+For random effects model
+```{r eval=F, echo=T}
+random.effect <- plm(y~x1+I(x1^2)+x2+x3, 
+                 data=panel, model="random")
+```
+To view these models without and with standard error.
+```{r eval=F, echo=T}
+stargazer(random.effect, type='text')
+stargazer(coeftest(random.effect, vcovHC), type="text")
+```
+Hausman test to verify if to use fixed effect or random effect. If p < 0.05, use fixed effects model.
+```{r eval=F, echo=T}
+phtest(fixed.effect, random.effect)
+```
+***
+
+
+
+
+
+
+
