@@ -10,7 +10,7 @@ editor_options:
 
 ### R - Codes: Table of Content
 
-1. [Base R Analysis](base_r.html)
+1. [Base R Statistics](base_r.html)
 2. [Data Manipulation](data_manipulation.html)
 3. [Data Visualization](data_visualization.html)
 4. Statistics

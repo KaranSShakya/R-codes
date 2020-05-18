@@ -1,5 +1,5 @@
 ---
-title: "Base R Analysis"
+title: "Base R Statistics"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -60,6 +60,27 @@ Creating Data Frames. Extra column created because of previous code.
 ```{r eval=T, echo=T}
 data <- data.frame(name=city, value=area)
 data
+```
+***
+### Normal Distribution ###
+```{r eval=T, echo=F}
+data("heights")
+male <- heights %>% 
+  filter(sex=="Male")
+```
+To see if **male** dataset follow a normal distribution. First define **p** as quantile ranges from 0.05 to 0.95.
+```{r eval=T, echo=T}
+p <- seq(0.05, 0.95, 0.05)
+```
+The **observed_q** is the real quantile of your dataset. The **theory_q** is the expected quantiles of a normal distribution. 
+```{r eval=T, echo=T}
+observed_q <- quantile(male$height, p)
+theory_q <- qnorm(p, mean=mean(male$height), sd=sd(male$height))
+```
+The see closely they match, simply plot them. This shows that points almost match, so male dataset is a good approximation for normal distribution.
+```{r eval=T, echo=F}
+plot(theory_q, observed_q)
+abline(0,1)
 ```
 
 ***
