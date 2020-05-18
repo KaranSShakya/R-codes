@@ -10,6 +10,12 @@ editor_options:
 
 [Home](index.html)
 
+```{r eval=T, echo=F, warning=F, message=F}
+library(tidyverse)
+library(readxl)
+library(readr)
+```
+
 ***
 ### Numeric / Character ###
 If x is character and y is numeric, and you want to reverse both these:
@@ -18,3 +24,23 @@ y <- as.numeric(x)
 x <- as.character(y)
 ```
 ***
+### Wide / Long ###
+This is mainly used to change WorldBank datasets. Example table: 
+```{r eval=T, echo=F}
+wide <- read_excel("data/data_test.xlsx", 
+    sheet = "wide_long")
+wide
+```
+**key** The columns to turn into rows. **value** what to call the data.
+```{r eval=T, echo=T}
+long <- wide %>% 
+  gather(key="Year", value="Population", 2:4)
+long
+```
+***
+### Column Name ###
+```{r eval=F, echo=T}
+names(data)[1] <- "New_Name"
+```
+***
+
