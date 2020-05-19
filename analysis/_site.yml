@@ -5,10 +5,19 @@ navbar:
   left:
   - text: Home
     href: index.html
-  - text: About
-    href: about.html
-  - text: License
-    href: license.html
+  - text: Base R
+    href: base_r.html
+  - text: Data Manipulation
+    href: data_manipulation.html
+  - text: Data Visualization
+    href: data_visualization.html
+  - text: Regression
+    href: regression.html
+  - text: GIT
+    href: git.html
+  right:
+  - text: GitHub Pages
+    href: https://github.com/KaranSShakya
 output:
   workflowr::wflow_html:
     toc: yes

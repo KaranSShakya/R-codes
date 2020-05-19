@@ -84,11 +84,5 @@ plot(theory_q, observed_q)
 abline(0,1)
 ```
 #### Graph ####
-The male height example shown as a normal distribution.
-```{r eval=T, echo=T}
-ggplot(male)+
-  geom_density(aes(x=heights))
-```
-
 ***
 

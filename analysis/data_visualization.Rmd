@@ -11,7 +11,83 @@ editor_options:
 [Home](index.html)
 
 ***
-test
+
+```{r eval=T, echo=F, warning=F, message=F}
+library(readxl)
+library(tidyverse)
+library(ggplot2)
+library(ggrepel)
+library(ggthemes)
+library(dslabs)
+LAC <- read_excel("data/honors_lac.xlsx", 
+                  sheet = "Latin America & Caribbean")
+```
 
 ### Line Plot ###
+```{r eval=T, echo=T}
+ggplot(LAC, aes(x=Year))+
+  geom_line(aes(y=Yield_r), color="Green3", size=1)+
+  geom_line(aes(y=Area_r), color="Green3", linetype="dashed", size=1)+
+  labs(title="Latin America & Caribbean", x="Year", y="Relative Change")+
+  theme_bw(base_size = 12)+
+  coord_cartesian(ylim=c(80, 140))+
+  scale_y_continuous(breaks = seq(80, 140, 10))+
+  scale_x_continuous(breaks = seq(2002, 2016, 2))+
+  geom_segment(aes(x=2002, y=100, xend=2016, yend=100), size=0.5)
+```
+
+***
+
+### Scatterplot ###
+#### Harvard Course Example ####
+First a code to calculate summary statistics to put on graph.
+```{r eval=T, echo=T}
+summary_r <- murders %>%
+    summarize(rate = sum(total) / sum(population) * 10^6) %>%
+    .$rate
+```
+The code for plot:
+```{r eval=T, echo=T}
+ggplot(murders, aes(x=population/10^6, y=total, label = abb)) +
+    geom_abline(intercept = log10(summary_r), lty = 2, color = "darkgrey") +
+    geom_point(aes(col = region), size = 3) +
+    geom_text_repel() +
+    scale_x_log10() +
+    scale_y_log10() +
+    labs(title = "US Gun Murders in 2010", x="Population in millions (log scale)",
+         y="Total number of murders (log scale)")+
+    scale_color_discrete(name = "Region") +
+    theme_economist()
+```
+
+#### Country - Name ####
+```{r eval=T, echo=F, message=F, warning=F, error=F}
+data0 <- read_csv("data/honors_baseline.csv")
+
+data1 <- data0 %>% 
+  select(2,3,5,6,13)
+data2 <- data1 %>%
+  filter(Year=="2016")
+```
+
+```{r eval=T, echo=T, message=F, warning=F, error=F}
+ggplot(data2, aes(x=log(GDP_capita), y=log(Fertilizer_use), color=Region))+
+  geom_point()+
+  geom_text(aes(label=Country), hjust=1, vjust=0)+
+  labs(title="Fertilizer Use (2016)", x="Log(GDP per Capita)", y="Log(Fertilizer Use)")+
+  theme_classic(base_size = 12)+
+  coord_cartesian(xlim=c(5.5, 11.2))
+```
+
+***
+
+### GG-Arrange ###
+Need library **ggplot2**. Where a, b, c... are individuals ggplots (a <- ggplot...)
+```{r eval=F, echo=T}
+ggarrange(a,b,c,d,e,f,g,
+          ncol = 2, nrow = 4)
+```
+
+***
+
 

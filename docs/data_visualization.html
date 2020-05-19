@@ -359,10 +359,19 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="about.html">About</a>
+  <a href="base_r.html">Base R</a>
 </li>
 <li>
-  <a href="license.html">License</a>
+  <a href="data_manipulation.html">Data Manipulation</a>
+</li>
+<li>
+  <a href="data_visualization.html">Data Visualization</a>
+</li>
+<li>
+  <a href="regression.html">Regression</a>
+</li>
+<li>
+  <a href="git.html">GIT</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -401,7 +410,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-05-17
+<strong>Last updated:</strong> 2020-05-19
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -425,7 +434,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -492,16 +501,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree5adafbcb873e9deecc1ed30535f237f2d2e3e9c4targetblank5adafbca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/5adafbcb873e9deecc1ed30535f237f2d2e3e9c4" target="_blank">5adafbc</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree75a49bc2ef2d4b80ba4211a829b4ba8f4b96f0b5targetblank75a49bca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/75a49bc2ef2d4b80ba4211a829b4ba8f4b96f0b5" target="_blank">75a49bc</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree5adafbcb873e9deecc1ed30535f237f2d2e3e9c4targetblank5adafbca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree75a49bc2ef2d4b80ba4211a829b4ba8f4b96f0b5targetblank75a49bca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/5adafbcb873e9deecc1ed30535f237f2d2e3e9c4" target="_blank">5adafbc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/75a49bc2ef2d4b80ba4211a829b4ba8f4b96f0b5" target="_blank">75a49bc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -512,15 +521,13 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
-Untracked files:
-    Untracked:  analysis/data_visualization.Rmd
-    Untracked:  data/.DS_Store
-    Untracked:  data/honors_baseline.csv
-    Untracked:  data/honors_lac.xlsx
-
 Unstaged changes:
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/regression.Rmd
+    Modified:   analysis/_site.yml
+    Modified:   analysis/base_r.Rmd
+    Modified:   analysis/data_visualization.Rmd
+
+Staged changes:
+    New:        analysis/.DS_Store
 
 </code></pre>
 <p>
@@ -533,9 +540,103 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/data_visualization.Rmd</code>) and HTML (<code>docs/data_visualization.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/99962e5f902de00496a9ea85d167b790fe16326f/analysis/data_visualization.Rmd" target="_blank">99962e5</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-19
+</td>
+<td>
+bug aes error - 1
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/1a7c01c13493416ea1d654e2a08d11a9c59df83c/analysis/data_visualization.Rmd" target="_blank">1a7c01c</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-19
+</td>
+<td>
+bug commit
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/27ba0572153e5273512541c06e7be1d5e019c7f2/analysis/data_visualization.Rmd" target="_blank">27ba057</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-17
+</td>
+<td>
+update ggplots + data for it
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/KaranSShakya/R-codes/27ba0572153e5273512541c06e7be1d5e019c7f2/docs/data_visualization.html" target="_blank">27ba057</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-17
+</td>
+<td>
+update ggplots + data for it
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -554,18 +655,136 @@ There are no past versions. Publish this analysis with <code>wflow_publish()</co
   scale_x_continuous(breaks = seq(2002, 2016, 2))+
   geom_segment(aes(x=2002, y=100, xend=2016, yend=100), size=0.5)</code></pre>
 <p><img src="figure/data_visualization.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/99962e5f902de00496a9ea85d167b790fe16326f/docs/figure/data_visualization.Rmd/unnamed-chunk-2-1.png" target="_blank">99962e5</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-19
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/27ba0572153e5273512541c06e7be1d5e019c7f2/docs/figure/data_visualization.Rmd/unnamed-chunk-2-1.png" target="_blank">27ba057</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-17
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <hr />
 </div>
 <div id="scatterplot" class="section level3">
 <h3>Scatterplot</h3>
+<div id="harvard-course-example" class="section level4">
+<h4>Harvard Course Example</h4>
+<p>First a code to calculate summary statistics to put on graph.</p>
+<pre class="r"><code>summary_r &lt;- murders %&gt;%
+    summarize(rate = sum(total) / sum(population) * 10^6) %&gt;%
+    .$rate</code></pre>
+<p>The code for plot:</p>
+<pre class="r"><code>ggplot(murders, aes(x=population/10^6, y=total, label = abb)) +
+    geom_abline(intercept = log10(summary_r), lty = 2, color = &quot;darkgrey&quot;) +
+    geom_point(aes(col = region), size = 3) +
+    geom_text_repel() +
+    scale_x_log10() +
+    scale_y_log10() +
+    labs(title = &quot;US Gun Murders in 2010&quot;, x=&quot;Population in millions (log scale)&quot;,
+         y=&quot;Total number of murders (log scale)&quot;)+
+    scale_color_discrete(name = &quot;Region&quot;) +
+    theme_economist()</code></pre>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/99962e5f902de00496a9ea85d167b790fe16326f/docs/figure/data_visualization.Rmd/unnamed-chunk-4-1.png" target="_blank">99962e5</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-19
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/27ba0572153e5273512541c06e7be1d5e019c7f2/docs/figure/data_visualization.Rmd/unnamed-chunk-4-1.png" target="_blank">27ba057</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-17
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="country---name" class="section level4">
+<h4>Country - Name</h4>
 <pre class="r"><code>ggplot(data2, aes(x=log(GDP_capita), y=log(Fertilizer_use), color=Region))+
   geom_point()+
   geom_text(aes(label=Country), hjust=1, vjust=0)+
   labs(title=&quot;Fertilizer Use (2016)&quot;, x=&quot;Log(GDP per Capita)&quot;, y=&quot;Log(Fertilizer Use)&quot;)+
   theme_classic(base_size = 12)+
   coord_cartesian(xlim=c(5.5, 11.2))</code></pre>
-<p><img src="figure/data_visualization.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
 <hr />
+</div>
 </div>
 <div id="gg-arrange" class="section level3">
 <h3>GG-Arrange</h3>
@@ -596,26 +815,27 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] dslabs_0.7.3    forcats_0.5.0   stringr_1.4.0   dplyr_0.8.5    
- [5] purrr_0.3.4     readr_1.3.1     tidyr_1.0.3     tibble_3.0.1   
- [9] tidyverse_1.3.0 ggplot2_3.3.0   readxl_1.3.1    workflowr_1.6.2
+ [1] dslabs_0.7.3    ggthemes_4.2.0  ggrepel_0.8.2   forcats_0.5.0  
+ [5] stringr_1.4.0   dplyr_0.8.5     purrr_0.3.4     readr_1.3.1    
+ [9] tidyr_1.0.3     tibble_3.0.1    ggplot2_3.3.0   tidyverse_1.3.0
+[13] readxl_1.3.1    workflowr_1.6.2
 
 loaded via a namespace (and not attached):
  [1] tidyselect_1.1.0 xfun_0.13        haven_2.2.0      lattice_0.20-41 
  [5] colorspace_1.4-1 vctrs_0.3.0      generics_0.0.2   htmltools_0.4.0 
  [9] yaml_2.2.1       rlang_0.4.6      later_1.0.0      pillar_1.4.4    
-[13] glue_1.4.1       withr_2.2.0      DBI_1.1.0        dbplyr_1.4.3    
+[13] withr_2.2.0      glue_1.4.1       DBI_1.1.0        dbplyr_1.4.3    
 [17] modelr_0.1.7     lifecycle_0.2.0  munsell_0.5.0    gtable_0.3.0    
 [21] cellranger_1.1.0 rvest_0.3.5      evaluate_0.14    labeling_0.3    
 [25] knitr_1.28       httpuv_1.5.2     fansi_0.4.1      broom_0.5.6     
-[29] Rcpp_1.0.4.6     promises_1.1.0   scales_1.1.1     backports_1.1.6 
+[29] Rcpp_1.0.4.6     promises_1.1.0   backports_1.1.6  scales_1.1.1    
 [33] jsonlite_1.6.1   farver_2.0.3     fs_1.4.1         hms_0.5.3       
 [37] digest_0.6.25    stringi_1.4.6    grid_4.0.0       rprojroot_1.3-2 
 [41] cli_2.0.2        tools_4.0.0      magrittr_1.5     crayon_1.3.4    
-[45] pkgconfig_2.0.3  ellipsis_0.3.0   xml2_1.3.2       reprex_0.3.0    
-[49] lubridate_1.7.8  rstudioapi_0.11  assertthat_0.2.1 rmarkdown_2.1   
-[53] httr_1.4.1       R6_2.4.1         nlme_3.1-147     git2r_0.27.1    
-[57] compiler_4.0.0  </code></pre>
+[45] whisker_0.4      pkgconfig_2.0.3  ellipsis_0.3.0   xml2_1.3.2      
+[49] reprex_0.3.0     lubridate_1.7.8  rstudioapi_0.11  assertthat_0.2.1
+[53] rmarkdown_2.1    httr_1.4.1       R6_2.4.1         nlme_3.1-147    
+[57] git2r_0.27.1     compiler_4.0.0  </code></pre>
 </div>
 </div>
 
