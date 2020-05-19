@@ -63,6 +63,7 @@ data
 ```
 ***
 ### Normal Distribution ###
+#### q-q graph ####
 ```{r eval=T, echo=F}
 data("heights")
 male <- heights %>% 
@@ -81,6 +82,12 @@ The see closely they match, simply plot them. This shows that points almost matc
 ```{r eval=T, echo=F}
 plot(theory_q, observed_q)
 abline(0,1)
+```
+#### Graph ####
+The male height example shown as a normal distribution.
+```{r eval=T, echo=T}
+ggplot(male)+
+  geom_density(aes(x=heights))
 ```
 
 ***

@@ -18,7 +18,7 @@ library(readr)
 
 ***
 ### Numeric / Character ###
-If x is character and y is numeric, and you want to reverse both these:
+If x is character and y is numeric, and you want to reverse both these: 
 ```{r eval=F, echo=T}
 y <- as.numeric(x)
 x <- as.character(y)
@@ -40,7 +40,7 @@ long
 ***
 ### Column Name ###
 ```{r eval=F, echo=T}
-names(data)[1] <- "New_Name"
+names(data)[1] <- "New_name"
 ```
 ***
 
