@@ -16,6 +16,7 @@ editor_options:
 library(readxl)
 library(tidyverse)
 library(ggplot2)
+library(gridExtra)
 library(ggrepel)
 library(ggthemes)
 library(dslabs)
@@ -23,7 +24,45 @@ LAC <- read_excel("data/honors_lac.xlsx",
                   sheet = "Latin America & Caribbean")
 ```
 
-### Line Plot ###
+### Histogram
+```{r eval=T, echo=F}
+hist <- heights %>% 
+  filter(sex=="Male")
+```
+Histogram. Change binwidth to alter the shape of the slopes.
+```{r eval=T, echo=F}
+ggplot(hist, aes(x=height))+
+  geom_histogram(binwidth = 1, fill = "blue", col = "black") +
+    xlab("Male heights in inches") +
+    ggtitle("Histogram")
+```
+To create a smooth histogram (more similar to normal distribution graphs)
+```{r eval=T, echo=T}
+ggplot(hist, aes(x=height))+
+  geom_density(fill = "green2")
+```
+#### Histogram (different bin levels)
+gg.arrange used to see how different binwidth affects different histograms. Needs package **gridExtra**.
+```{r eval=T, echo=T}
+p <- heights %>% filter(sex == "Male") %>% ggplot(aes(x = height))
+p1 <- p + geom_histogram(binwidth = 1, fill = "blue", col = "black")
+p2 <- p + geom_histogram(binwidth = 2, fill = "blue", col = "black")
+p3 <- p + geom_histogram(binwidth = 3, fill = "blue", col = "black")
+
+grid.arrange(p1, p2, p3, ncol = 3)
+```
+
+***
+### Q-Q Plot
+Basic qq plot:
+```{r eval=T, echo=T}
+p1 <- heights %>% filter(sex == "Male") 
+ggplot(p1, aes(sample = height))+
+  geom_qq()
+```
+
+***
+### Line Plot 
 ```{r eval=T, echo=T}
 ggplot(LAC, aes(x=Year))+
   geom_line(aes(y=Yield_r), color="Green3", size=1)+
@@ -38,8 +77,8 @@ ggplot(LAC, aes(x=Year))+
 
 ***
 
-### Scatterplot ###
-#### Harvard Course Example ####
+### Scatterplot 
+#### Harvard Course Example 
 First a code to calculate summary statistics to put on graph.
 ```{r eval=T, echo=T}
 summary_r <- murders %>%
@@ -60,7 +99,7 @@ ggplot(murders, aes(x=population/10^6, y=total, label = abb)) +
     theme_economist()
 ```
 
-#### Country - Name ####
+#### Country - Name 
 ```{r eval=T, echo=F, message=F, warning=F, error=F}
 data0 <- read_csv("data/honors_baseline.csv")
 
@@ -77,15 +116,6 @@ ggplot(data2, aes(x=log(GDP_capita), y=log(Fertilizer_use), color=Region))+
   labs(title="Fertilizer Use (2016)", x="Log(GDP per Capita)", y="Log(Fertilizer Use)")+
   theme_classic(base_size = 12)+
   coord_cartesian(xlim=c(5.5, 11.2))
-```
-
-***
-
-### GG-Arrange ###
-Need library **ggplot2**. Where a, b, c... are individuals ggplots (a <- ggplot...)
-```{r eval=F, echo=T}
-ggarrange(a,b,c,d,e,f,g,
-          ncol = 2, nrow = 4)
 ```
 
 ***

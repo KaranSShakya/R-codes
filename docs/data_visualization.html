@@ -375,7 +375,9 @@ div.tocify {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/KaranSShakya">GitHub Pages</a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -501,16 +503,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree75a49bc2ef2d4b80ba4211a829b4ba8f4b96f0b5targetblank75a49bca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/75a49bc2ef2d4b80ba4211a829b4ba8f4b96f0b5" target="_blank">75a49bc</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestreee1a5784bd22ee26f7b23163e32c6daed8a634fdctargetblanke1a5784a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/e1a5784bd22ee26f7b23163e32c6daed8a634fdc" target="_blank">e1a5784</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree75a49bc2ef2d4b80ba4211a829b4ba8f4b96f0b5targetblank75a49bca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestreee1a5784bd22ee26f7b23163e32c6daed8a634fdctargetblanke1a5784a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/75a49bc2ef2d4b80ba4211a829b4ba8f4b96f0b5" target="_blank">75a49bc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/e1a5784bd22ee26f7b23163e32c6daed8a634fdc" target="_blank">e1a5784</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -521,13 +523,11 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
-Unstaged changes:
-    Modified:   analysis/_site.yml
-    Modified:   analysis/base_r.Rmd
-    Modified:   analysis/data_visualization.Rmd
+Untracked files:
+    Untracked:  analysis/figure/
 
-Staged changes:
-    New:        analysis/.DS_Store
+Unstaged changes:
+    Modified:   analysis/data_visualization.Rmd
 
 </code></pre>
 <p>
@@ -566,6 +566,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/9097ee4d1a91cde0952e21b941135a6e0d320667/analysis/data_visualization.Rmd" target="_blank">9097ee4</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-19
+</td>
+<td>
+aes erros SOLVED + links
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/KaranSShakya/R-codes/9097ee4d1a91cde0952e21b941135a6e0d320667/docs/data_visualization.html" target="_blank">9097ee4</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-19
+</td>
+<td>
+aes erros SOLVED + links
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -643,87 +677,11 @@ update ggplots + data for it
 </div>
 <p><a href="index.html">Home</a></p>
 <hr />
-<div id="line-plot" class="section level3">
-<h3>Line Plot</h3>
-<pre class="r"><code>ggplot(LAC, aes(x=Year))+
-  geom_line(aes(y=Yield_r), color=&quot;Green3&quot;, size=1)+
-  geom_line(aes(y=Area_r), color=&quot;Green3&quot;, linetype=&quot;dashed&quot;, size=1)+
-  labs(title=&quot;Latin America &amp; Caribbean&quot;, x=&quot;Year&quot;, y=&quot;Relative Change&quot;)+
-  theme_bw(base_size = 12)+
-  coord_cartesian(ylim=c(80, 140))+
-  scale_y_continuous(breaks = seq(80, 140, 10))+
-  scale_x_continuous(breaks = seq(2002, 2016, 2))+
-  geom_segment(aes(x=2002, y=100, xend=2016, yend=100), size=0.5)</code></pre>
-<p><img src="figure/data_visualization.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
-Past versions of unnamed-chunk-2-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-2-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/KaranSShakya/R-codes/blob/99962e5f902de00496a9ea85d167b790fe16326f/docs/figure/data_visualization.Rmd/unnamed-chunk-2-1.png" target="_blank">99962e5</a>
-</td>
-<td>
-KaranSShakya
-</td>
-<td>
-2020-05-19
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/KaranSShakya/R-codes/blob/27ba0572153e5273512541c06e7be1d5e019c7f2/docs/figure/data_visualization.Rmd/unnamed-chunk-2-1.png" target="_blank">27ba057</a>
-</td>
-<td>
-KaranSShakya
-</td>
-<td>
-2020-05-17
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<hr />
-</div>
-<div id="scatterplot" class="section level3">
-<h3>Scatterplot</h3>
-<div id="harvard-course-example" class="section level4">
-<h4>Harvard Course Example</h4>
-<p>First a code to calculate summary statistics to put on graph.</p>
-<pre class="r"><code>summary_r &lt;- murders %&gt;%
-    summarize(rate = sum(total) / sum(population) * 10^6) %&gt;%
-    .$rate</code></pre>
-<p>The code for plot:</p>
-<pre class="r"><code>ggplot(murders, aes(x=population/10^6, y=total, label = abb)) +
-    geom_abline(intercept = log10(summary_r), lty = 2, color = &quot;darkgrey&quot;) +
-    geom_point(aes(col = region), size = 3) +
-    geom_text_repel() +
-    scale_x_log10() +
-    scale_y_log10() +
-    labs(title = &quot;US Gun Murders in 2010&quot;, x=&quot;Population in millions (log scale)&quot;,
-         y=&quot;Total number of murders (log scale)&quot;)+
-    scale_color_discrete(name = &quot;Region&quot;) +
-    theme_economist()</code></pre>
+<div id="histogram" class="section level3">
+<h3>Histogram</h3>
+<p>Histogram. Change binwidth to alter the shape of the slopes. <img src="figure/data_visualization.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /> To create a smooth histogram (more similar to normal distribution graphs)</p>
+<pre class="r"><code>ggplot(hist, aes(x=height))+
+  geom_density(fill = &quot;green2&quot;)</code></pre>
 <p><img src="figure/data_visualization.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
@@ -747,6 +705,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/9097ee4d1a91cde0952e21b941135a6e0d320667/docs/figure/data_visualization.Rmd/unnamed-chunk-4-1.png" target="_blank">9097ee4</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/KaranSShakya/R-codes/blob/99962e5f902de00496a9ea85d167b790fe16326f/docs/figure/data_visualization.Rmd/unnamed-chunk-4-1.png" target="_blank">99962e5</a>
@@ -773,6 +742,99 @@ KaranSShakya
 </table>
 </div>
 </div>
+<div id="histogram-different-bin-levels" class="section level4">
+<h4>Histogram (different bin levels)</h4>
+<p>gg.arrange used to see how different binwidth affects different histograms. Needs package <strong>gridExtra</strong>.</p>
+<pre class="r"><code>p &lt;- heights %&gt;% filter(sex == &quot;Male&quot;) %&gt;% ggplot(aes(x = height))
+p1 &lt;- p + geom_histogram(binwidth = 1, fill = &quot;blue&quot;, col = &quot;black&quot;)
+p2 &lt;- p + geom_histogram(binwidth = 2, fill = &quot;blue&quot;, col = &quot;black&quot;)
+p3 &lt;- p + geom_histogram(binwidth = 3, fill = &quot;blue&quot;, col = &quot;black&quot;)
+
+grid.arrange(p1, p2, p3, ncol = 3)</code></pre>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+</div>
+<div id="q-q-plot" class="section level3">
+<h3>Q-Q Plot</h3>
+<p>Basic qq plot:</p>
+<pre class="r"><code>p1 &lt;- heights %&gt;% filter(sex == &quot;Male&quot;) 
+ggplot(p1, aes(sample = height))+
+  geom_qq()</code></pre>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/9097ee4d1a91cde0952e21b941135a6e0d320667/docs/figure/data_visualization.Rmd/unnamed-chunk-6-1.png" target="_blank">9097ee4</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr />
+</div>
+<div id="line-plot" class="section level3">
+<h3>Line Plot</h3>
+<pre class="r"><code>ggplot(LAC, aes(x=Year))+
+  geom_line(aes(y=Yield_r), color=&quot;Green3&quot;, size=1)+
+  geom_line(aes(y=Area_r), color=&quot;Green3&quot;, linetype=&quot;dashed&quot;, size=1)+
+  labs(title=&quot;Latin America &amp; Caribbean&quot;, x=&quot;Year&quot;, y=&quot;Relative Change&quot;)+
+  theme_bw(base_size = 12)+
+  coord_cartesian(ylim=c(80, 140))+
+  scale_y_continuous(breaks = seq(80, 140, 10))+
+  scale_x_continuous(breaks = seq(2002, 2016, 2))+
+  geom_segment(aes(x=2002, y=100, xend=2016, yend=100), size=0.5)</code></pre>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="scatterplot" class="section level3">
+<h3>Scatterplot</h3>
+<div id="harvard-course-example" class="section level4">
+<h4>Harvard Course Example</h4>
+<p>First a code to calculate summary statistics to put on graph.</p>
+<pre class="r"><code>summary_r &lt;- murders %&gt;%
+    summarize(rate = sum(total) / sum(population) * 10^6) %&gt;%
+    .$rate</code></pre>
+<p>The code for plot:</p>
+<pre class="r"><code>ggplot(murders, aes(x=population/10^6, y=total, label = abb)) +
+    geom_abline(intercept = log10(summary_r), lty = 2, color = &quot;darkgrey&quot;) +
+    geom_point(aes(col = region), size = 3) +
+    geom_text_repel() +
+    scale_x_log10() +
+    scale_y_log10() +
+    labs(title = &quot;US Gun Murders in 2010&quot;, x=&quot;Population in millions (log scale)&quot;,
+         y=&quot;Total number of murders (log scale)&quot;)+
+    scale_color_discrete(name = &quot;Region&quot;) +
+    theme_economist()</code></pre>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="country---name" class="section level4">
 <h4>Country - Name</h4>
@@ -782,15 +844,7 @@ KaranSShakya
   labs(title=&quot;Fertilizer Use (2016)&quot;, x=&quot;Log(GDP per Capita)&quot;, y=&quot;Log(Fertilizer Use)&quot;)+
   theme_classic(base_size = 12)+
   coord_cartesian(xlim=c(5.5, 11.2))</code></pre>
-<p><img src="figure/data_visualization.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
-<hr />
-</div>
-</div>
-<div id="gg-arrange" class="section level3">
-<h3>GG-Arrange</h3>
-<p>Need library <strong>ggplot2</strong>. Where a, b, c… are individuals ggplots (a &lt;- ggplot…)</p>
-<pre class="r"><code>ggarrange(a,b,c,d,e,f,g,
-          ncol = 2, nrow = 4)</code></pre>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
 <hr />
 <br>
 <p>
@@ -815,27 +869,28 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] dslabs_0.7.3    ggthemes_4.2.0  ggrepel_0.8.2   forcats_0.5.0  
- [5] stringr_1.4.0   dplyr_0.8.5     purrr_0.3.4     readr_1.3.1    
- [9] tidyr_1.0.3     tibble_3.0.1    ggplot2_3.3.0   tidyverse_1.3.0
-[13] readxl_1.3.1    workflowr_1.6.2
+ [1] dslabs_0.7.3    ggthemes_4.2.0  ggrepel_0.8.2   gridExtra_2.3  
+ [5] forcats_0.5.0   stringr_1.4.0   dplyr_0.8.5     purrr_0.3.4    
+ [9] readr_1.3.1     tidyr_1.0.3     tibble_3.0.1    ggplot2_3.3.0  
+[13] tidyverse_1.3.0 readxl_1.3.1    workflowr_1.6.2
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.0 xfun_0.13        haven_2.2.0      lattice_0.20-41 
- [5] colorspace_1.4-1 vctrs_0.3.0      generics_0.0.2   htmltools_0.4.0 
- [9] yaml_2.2.1       rlang_0.4.6      later_1.0.0      pillar_1.4.4    
-[13] withr_2.2.0      glue_1.4.1       DBI_1.1.0        dbplyr_1.4.3    
-[17] modelr_0.1.7     lifecycle_0.2.0  munsell_0.5.0    gtable_0.3.0    
-[21] cellranger_1.1.0 rvest_0.3.5      evaluate_0.14    labeling_0.3    
-[25] knitr_1.28       httpuv_1.5.2     fansi_0.4.1      broom_0.5.6     
-[29] Rcpp_1.0.4.6     promises_1.1.0   backports_1.1.6  scales_1.1.1    
-[33] jsonlite_1.6.1   farver_2.0.3     fs_1.4.1         hms_0.5.3       
-[37] digest_0.6.25    stringi_1.4.6    grid_4.0.0       rprojroot_1.3-2 
-[41] cli_2.0.2        tools_4.0.0      magrittr_1.5     crayon_1.3.4    
-[45] whisker_0.4      pkgconfig_2.0.3  ellipsis_0.3.0   xml2_1.3.2      
-[49] reprex_0.3.0     lubridate_1.7.8  rstudioapi_0.11  assertthat_0.2.1
-[53] rmarkdown_2.1    httr_1.4.1       R6_2.4.1         nlme_3.1-147    
-[57] git2r_0.27.1     compiler_4.0.0  </code></pre>
+ [1] Rcpp_1.0.4.6     lubridate_1.7.8  lattice_0.20-41  assertthat_0.2.1
+ [5] rprojroot_1.3-2  digest_0.6.25    R6_2.4.1         cellranger_1.1.0
+ [9] backports_1.1.6  reprex_0.3.0     evaluate_0.14    httr_1.4.1      
+[13] pillar_1.4.4     rlang_0.4.6      rstudioapi_0.11  whisker_0.4     
+[17] rmarkdown_2.1    labeling_0.3     munsell_0.5.0    broom_0.5.6     
+[21] compiler_4.0.0   httpuv_1.5.2     modelr_0.1.7     xfun_0.13       
+[25] pkgconfig_2.0.3  htmltools_0.4.0  tidyselect_1.1.0 fansi_0.4.1     
+[29] crayon_1.3.4     dbplyr_1.4.3     withr_2.2.0      later_1.0.0     
+[33] grid_4.0.0       nlme_3.1-147     jsonlite_1.6.1   gtable_0.3.0    
+[37] lifecycle_0.2.0  DBI_1.1.0        git2r_0.27.1     magrittr_1.5    
+[41] scales_1.1.1     cli_2.0.2        stringi_1.4.6    farver_2.0.3    
+[45] fs_1.4.1         promises_1.1.0   xml2_1.3.2       ellipsis_0.3.0  
+[49] generics_0.0.2   vctrs_0.3.0      tools_4.0.0      glue_1.4.1      
+[53] hms_0.5.3        yaml_2.2.1       colorspace_1.4-1 rvest_0.3.5     
+[57] knitr_1.28       haven_2.2.0     </code></pre>
+</div>
 </div>
 </div>
 
