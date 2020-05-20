@@ -14,24 +14,9 @@ editor_options:
 library(tidyverse)
 library(dslabs)
 ```
-***
-### Observing Columns ###
-**murders** is the dataset. To observe the column types,
-```{r eval=T, echo=T}
-str(murders)
-```
-To observe all column numbers. Easy to see which column is which number.
-```{r eval=T, echo=T}
-names(murders)
-```
-To observe the first 5 data data of a column.
-```{r eval=T, echo=T}
-murders$state[1:5]
-```
-***
 
-***
-### Generating sequences ###
+
+### Generating sequences 
 Normal sequence
 ```{r eval=T, echo=T}
 x <- seq(1:10)
@@ -48,7 +33,42 @@ y.divide <- seq(1,10, length.out = 3)
 y.divide
 ```
 ***
-### Data Frames (Vectors) ###
+
+
+
+
+### Mean / Sd
+For mean, median, sd, min, max:
+```{r eval=F, echo=T}
+heights %>%
+    filter(sex == "Male") %>%
+    summarize(average=mean(height), sd=sd(height), median = median(height),
+              minimum = min(height), maximum = max(height))
+```
+***
+### Observing Columns 
+**murders** is the dataset. To observe the column types,
+```{r eval=T, echo=T}
+str(murders)
+```
+To observe all column numbers. Easy to see which column is which number.
+```{r eval=T, echo=T}
+names(murders)
+```
+To observe the first 5 data data of a column.
+```{r eval=T, echo=T}
+murders$state[1:5]
+```
+***
+### Group by - summarize
+```{r eval=T, echo=T}
+heights %>%
+    group_by(sex) %>%
+    summarize(average = mean(height), standard_deviation = sd(height))
+```
+***
+
+### Data Frames (Vectors) 
 Associating vectors only
 ```{r eval=T, echo=T}
 city <- c("Tokyo", "Lile", "Dover")
@@ -62,7 +82,7 @@ data <- data.frame(name=city, value=area)
 data
 ```
 ***
-### Normal Distribution ###
+### Normal Distribution 
 #### q-q graph ####
 ```{r eval=T, echo=F}
 data("heights")
@@ -86,3 +106,7 @@ abline(0,1)
 #### Graph ####
 ***
 
+
+
+
+***
