@@ -120,4 +120,32 @@ ggplot(data2, aes(x=log(GDP_capita), y=log(Fertilizer_use), color=Region))+
 
 ***
 
+### Faceting 
+Faceting is important in comparing or in showing trends. Benefit is that the scale is same which makes comparison easier. The first graph is for 2 variables **(continent ~ year)**.
+```{r eval=T, echo=T}
+filter(gapminder, year %in% c(1962, 2012)) %>%
+    ggplot(aes(fertility, life_expectancy, col = continent)) +
+    geom_point() +
+    facet_grid(continent ~ year)
+```
+This one is only for one variable **(. ~ year)**.
+```{r eval=T, echo=T}
+filter(gapminder, year %in% c(1962, 2012)) %>%
+    ggplot(aes(fertility, life_expectancy, col = continent)) +
+    geom_point() +
+    facet_grid(. ~ year)
+```
+For specifc comparion example:
+```{r eval=T, echo=T}
+years <- c(1962, 1980, 1990, 2000, 2012)
+continents <- c("Europe", "Asia")
+gapminder %>%
+    filter(year %in% years & continent %in% continents) %>%
+    ggplot(aes(fertility, life_expectancy, col = continent)) +
+    geom_point() +
+    facet_wrap(~year)
+```
+***
+
+
 
