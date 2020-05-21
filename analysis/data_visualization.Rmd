@@ -69,7 +69,7 @@ This stacked box plot is **log** scaled.
 gapminder <- gapminder %>%
     mutate(dollars_per_day = gdp/population/365)
 ```
-```{r eval=T, echo=F}
+```{r eval=T, echo=T}
 gapminder %>%
     filter(year == "1970" & !is.na(gdp)) %>%
     mutate(region = reorder(region, dollars_per_day, FUN = median)) %>%    # reorder
@@ -79,7 +79,9 @@ gapminder %>%
     xlab("")+
   scale_y_continuous(trans = "log2")
 ```
+
 ***
+
 ### Line Plot 
 ```{r eval=T, echo=T}
 ggplot(LAC, aes(x=Year))+
@@ -172,6 +174,7 @@ gapminder %>%
     geom_point() +
     facet_wrap(~year)
 ```
+
 ***
 
 

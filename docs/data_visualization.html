@@ -503,16 +503,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree25d343a326766c8514326e41e9b367e964ce39eatargetblank25d343aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/25d343a326766c8514326e41e9b367e964ce39ea" target="_blank">25d343a</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestreed65de396ba01777c12f5db691c73461a511e48f2targetblankd65de39a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/d65de396ba01777c12f5db691c73461a511e48f2" target="_blank">d65de39</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree25d343a326766c8514326e41e9b367e964ce39eatargetblank25d343aa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestreed65de396ba01777c12f5db691c73461a511e48f2targetblankd65de39a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/25d343a326766c8514326e41e9b367e964ce39ea" target="_blank">25d343a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/d65de396ba01777c12f5db691c73461a511e48f2" target="_blank">d65de39</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -563,6 +563,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/b1dee72d2337cb80a20ab980942ffabbf7207860/analysis/data_visualization.Rmd" target="_blank">b1dee72</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-21
+</td>
+<td>
+data visualiaztion commits
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/KaranSShakya/R-codes/b1dee72d2337cb80a20ab980942ffabbf7207860/docs/data_visualization.html" target="_blank">b1dee72</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-21
+</td>
+<td>
+data visualiaztion commits
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -968,7 +1002,57 @@ KaranSShakya
 <div id="stacked-box-plot-with-reorder" class="section level4">
 <h4>Stacked Box Plot with Reorder</h4>
 <p>This stacked box plot is <strong>log</strong> scaled.</p>
-<p><img src="figure/data_visualization.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /> *** ### Line Plot</p>
+<pre class="r"><code>gapminder %&gt;%
+    filter(year == &quot;1970&quot; &amp; !is.na(gdp)) %&gt;%
+    mutate(region = reorder(region, dollars_per_day, FUN = median)) %&gt;%    # reorder
+    ggplot(aes(region, dollars_per_day, fill = continent)) +    # color by continent
+    geom_boxplot() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+    xlab(&quot;&quot;)+
+  scale_y_continuous(trans = &quot;log2&quot;)</code></pre>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-8-1">
+Past versions of unnamed-chunk-8-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-8-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/b1dee72d2337cb80a20ab980942ffabbf7207860/docs/figure/data_visualization.Rmd/unnamed-chunk-8-1.png" target="_blank">b1dee72</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr />
+</div>
+</div>
+<div id="line-plot" class="section level3">
+<h3>Line Plot</h3>
 <pre class="r"><code>ggplot(LAC, aes(x=Year))+
   geom_line(aes(y=Yield_r), color=&quot;Green3&quot;, size=1)+
   geom_line(aes(y=Area_r), color=&quot;Green3&quot;, linetype=&quot;dashed&quot;, size=1)+
@@ -1003,6 +1087,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/b1dee72d2337cb80a20ab980942ffabbf7207860/docs/figure/data_visualization.Rmd/unnamed-chunk-9-1.png" target="_blank">b1dee72</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-21
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/KaranSShakya/R-codes/blob/2b4e76b4bf642efbc5913f4e462dfc9528dba36a/docs/figure/data_visualization.Rmd/unnamed-chunk-9-1.png" target="_blank">2b4e76b</a>
 </td>
 <td>
@@ -1024,8 +1119,45 @@ gapminder %&gt;% filter(country %in% countries) %&gt;%
     geom_line() +
     geom_text(data = new_labels, aes(x, y, label = country), size = 5) +
     theme(legend.position = &quot;none&quot;)</code></pre>
-<p><img src="figure/data_visualization.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /> ***</p>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/b1dee72d2337cb80a20ab980942ffabbf7207860/docs/figure/data_visualization.Rmd/unnamed-chunk-10-1.png" target="_blank">b1dee72</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-21
+</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+<hr />
 </div>
 <div id="scatterplot" class="section level3">
 <h3>Scatterplot</h3>
@@ -1069,6 +1201,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/b1dee72d2337cb80a20ab980942ffabbf7207860/docs/figure/data_visualization.Rmd/unnamed-chunk-12-1.png" target="_blank">b1dee72</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-21
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/KaranSShakya/R-codes/blob/25d343a326766c8514326e41e9b367e964ce39ea/docs/figure/data_visualization.Rmd/unnamed-chunk-12-1.png" target="_blank">25d343a</a>
@@ -1118,6 +1261,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/b1dee72d2337cb80a20ab980942ffabbf7207860/docs/figure/data_visualization.Rmd/unnamed-chunk-14-1.png" target="_blank">b1dee72</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-21
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/KaranSShakya/R-codes/blob/25d343a326766c8514326e41e9b367e964ce39ea/docs/figure/data_visualization.Rmd/unnamed-chunk-14-1.png" target="_blank">25d343a</a>
 </td>
 <td>
@@ -1141,12 +1295,88 @@ KaranSShakya
     ggplot(aes(fertility, life_expectancy, col = continent)) +
     geom_point() +
     facet_grid(continent ~ year)</code></pre>
-<p><img src="figure/data_visualization.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /> This one is only for one variable <strong>(. ~ year)</strong>.</p>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-15-1">
+Past versions of unnamed-chunk-15-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-15-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/b1dee72d2337cb80a20ab980942ffabbf7207860/docs/figure/data_visualization.Rmd/unnamed-chunk-15-1.png" target="_blank">b1dee72</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>This one is only for one variable <strong>(. ~ year)</strong>.</p>
 <pre class="r"><code>filter(gapminder, year %in% c(1962, 2012)) %&gt;%
     ggplot(aes(fertility, life_expectancy, col = continent)) +
     geom_point() +
     facet_grid(. ~ year)</code></pre>
-<p><img src="figure/data_visualization.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /> For specifc comparion example:</p>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-16-1">
+Past versions of unnamed-chunk-16-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-16-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/b1dee72d2337cb80a20ab980942ffabbf7207860/docs/figure/data_visualization.Rmd/unnamed-chunk-16-1.png" target="_blank">b1dee72</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>For specifc comparion example:</p>
 <pre class="r"><code>years &lt;- c(1962, 1980, 1990, 2000, 2012)
 continents &lt;- c(&quot;Europe&quot;, &quot;Asia&quot;)
 gapminder %&gt;%
@@ -1154,7 +1384,45 @@ gapminder %&gt;%
     ggplot(aes(fertility, life_expectancy, col = continent)) +
     geom_point() +
     facet_wrap(~year)</code></pre>
-<p><img src="figure/data_visualization.Rmd/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /> ***</p>
+<p><img src="figure/data_visualization.Rmd/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-17-1">
+Past versions of unnamed-chunk-17-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-17-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/b1dee72d2337cb80a20ab980942ffabbf7207860/docs/figure/data_visualization.Rmd/unnamed-chunk-17-1.png" target="_blank">b1dee72</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr />
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
