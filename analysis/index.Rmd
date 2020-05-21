@@ -16,3 +16,7 @@ editor_options:
 5. [Regression](regression.html)
 6. Machine Learning
 7. [GIT](git.html)
+
+***
+
+This is a cheatsheet for R, built using past project and online courses.  
