@@ -37,6 +37,23 @@ y.divide
 
 
 
+
+### Monte Carlo Simulations 
+Monte Carlo simulations model the probability of different outcomes by repeating a random process a large enough number of times that the results are similar to what would be observed if the process were repeated forever.
+First, create an box with data. This can be done through **rep** (2 red, 3 blue balls:
+```{r eval=T, echo=T}
+beads <- rep(c("red", "blue"), times = c(2,3))
+beads
+```
+Lets pick a bead from this box 10,000 times. To do this, we set up *B* and run it.
+```{r eval=T, echo=T}
+B <- 100000    
+events <- replicate(B, sample(beads, 1))    # draw 1 bead, B times
+tab <- table(events)    # make a table of outcome counts
+prop.table(tab)    # view table of outcome proportio
+```
+***
+
 ### Mean / Sd
 For mean, median, sd, min, max:
 ```{r eval=F, echo=T}
@@ -60,14 +77,6 @@ To observe the first 5 data data of a column.
 murders$state[1:5]
 ```
 ***
-### Group by - summarize
-```{r eval=T, echo=T}
-heights %>%
-    group_by(sex) %>%
-    summarize(average = mean(height), standard_deviation = sd(height))
-```
-***
-
 ### Data Frames (Vectors) 
 Associating vectors only
 ```{r eval=T, echo=T}
@@ -103,7 +112,6 @@ The see closely they match, simply plot them. This shows that points almost matc
 plot(theory_q, observed_q)
 abline(0,1)
 ```
-#### Graph ####
 ***
 
 
