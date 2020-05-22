@@ -503,16 +503,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree9b03ebba344dd819995e768ec1e5f2dfadbad6d6targetblank9b03ebba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/9b03ebba344dd819995e768ec1e5f2dfadbad6d6" target="_blank">9b03ebb</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestreea64008dd031e0c38040fa9d13a2f5e53c2504cfatargetblanka64008da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/a64008dd031e0c38040fa9d13a2f5e53c2504cfa" target="_blank">a64008d</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree9b03ebba344dd819995e768ec1e5f2dfadbad6d6targetblank9b03ebba" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestreea64008dd031e0c38040fa9d13a2f5e53c2504cfatargetblanka64008da" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/9b03ebba344dd819995e768ec1e5f2dfadbad6d6" target="_blank">9b03ebb</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/a64008dd031e0c38040fa9d13a2f5e53c2504cfa" target="_blank">a64008d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -563,6 +563,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/a64008dd031e0c38040fa9d13a2f5e53c2504cfa/analysis/base_r.Rmd" target="_blank">a64008d</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-22
+</td>
+<td>
+base r: monte carlo
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/KaranSShakya/R-codes/a64008dd031e0c38040fa9d13a2f5e53c2504cfa/docs/base_r.html" target="_blank">a64008d</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-22
+</td>
+<td>
+base r: monte carlo
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -776,6 +810,8 @@ y.divide</code></pre>
 </div>
 <div id="monte-carlo-simulations" class="section level3">
 <h3>Monte Carlo Simulations</h3>
+<div id="discrete" class="section level4">
+<h4>Discrete</h4>
 <p>Monte Carlo simulations model the probability of different outcomes by repeating a random process a large enough number of times that the results are similar to what would be observed if the process were repeated forever. First, create an box with data. This can be done through <strong>rep</strong> (2 red, 3 blue balls:</p>
 <pre class="r"><code>beads &lt;- rep(c(&quot;red&quot;, &quot;blue&quot;), times = c(2,3))
 beads</code></pre>
@@ -788,7 +824,31 @@ prop.table(tab)    # view table of outcome proportio</code></pre>
 <pre><code>events
    blue     red 
 0.60104 0.39896 </code></pre>
+</div>
+<div id="continuous" class="section level4">
+<h4>Continuous</h4>
+<p>Generating simulated height data using normal distribution.</p>
+<pre class="r"><code>x &lt;- heights %&gt;% filter(sex==&quot;Male&quot;) %&gt;% pull(height)
+n &lt;- length(x)
+avg &lt;- mean(x)
+s &lt;- sd(x)
+simulated_heights &lt;- rnorm(n, avg, s)</code></pre>
+<p>The <strong>sumulated_heights</strong> is built from the length, mena, and sd. The plot of this is as follows. Important to note that this is built from the assumption of normal distribution:</p>
+<pre class="r"><code>data.frame(simulated_heights = simulated_heights) %&gt;%
+    ggplot(aes(simulated_heights)) +
+    geom_histogram(color=&quot;black&quot;, binwidth = 2)</code></pre>
+<p><img src="figure/base_r.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /> Example, running a monte carlo simulation to find out the probablity of people over 7 feet (answer: <em>0.0214</em>). Running the simulation 10,000 times (B):</p>
+<pre class="r"><code>set.seed(3233)
+B &lt;- 10000
+tallest &lt;- replicate(B, {
+    simulated_data &lt;- rnorm(800, avg, s)    # generate 800 normally distributed random heights
+    max(simulated_data)    # determine the tallest height
+})
+mean(tallest &gt;= 7*12) #7*12 = 84 inches, which is 7 feet. </code></pre>
+<pre><code>[1] 0.0214</code></pre>
+<p>Important to note the <strong>set.seed()</strong> function allows us to control the random. Without this function, the answer would be different because you cannot control the random variability. But with set.seed() you will have the same answer every time.</p>
 <hr />
+</div>
 </div>
 <div id="mean-sd" class="section level3">
 <h3>Mean / Sd</h3>
@@ -844,7 +904,7 @@ Dover Dover    13</code></pre>
 <p>The <strong>observed_q</strong> is the real quantile of your dataset. The <strong>theory_q</strong> is the expected quantiles of a normal distribution.</p>
 <pre class="r"><code>observed_q &lt;- quantile(male$height, p)
 theory_q &lt;- qnorm(p, mean=mean(male$height), sd=sd(male$height))</code></pre>
-<p>The see closely they match, simply plot them. This shows that points almost match, so male dataset is a good approximation for normal distribution. <img src="figure/base_r.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /> ***</p>
+<p>The see closely they match, simply plot them. This shows that points almost match, so male dataset is a good approximation for normal distribution. <img src="figure/base_r.Rmd/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /> ***</p>
 <hr />
 <br>
 <p>
@@ -880,15 +940,15 @@ loaded via a namespace (and not attached):
 [13] withr_2.2.0      glue_1.4.1       DBI_1.1.0        dbplyr_1.4.3    
 [17] modelr_0.1.7     readxl_1.3.1     lifecycle_0.2.0  munsell_0.5.0   
 [21] gtable_0.3.0     cellranger_1.1.0 rvest_0.3.5      evaluate_0.14   
-[25] knitr_1.28       httpuv_1.5.2     fansi_0.4.1      broom_0.5.6     
-[29] Rcpp_1.0.4.6     promises_1.1.0   backports_1.1.6  scales_1.1.1    
-[33] jsonlite_1.6.1   fs_1.4.1         hms_0.5.3        digest_0.6.25   
-[37] stringi_1.4.6    grid_4.0.0       rprojroot_1.3-2  cli_2.0.2       
-[41] tools_4.0.0      magrittr_1.5     crayon_1.3.4     whisker_0.4     
-[45] pkgconfig_2.0.3  ellipsis_0.3.0   xml2_1.3.2       reprex_0.3.0    
-[49] lubridate_1.7.8  rstudioapi_0.11  assertthat_0.2.1 rmarkdown_2.1   
-[53] httr_1.4.1       R6_2.4.1         nlme_3.1-147     git2r_0.27.1    
-[57] compiler_4.0.0  </code></pre>
+[25] labeling_0.3     knitr_1.28       httpuv_1.5.2     fansi_0.4.1     
+[29] broom_0.5.6      Rcpp_1.0.4.6     promises_1.1.0   backports_1.1.6 
+[33] scales_1.1.1     jsonlite_1.6.1   farver_2.0.3     fs_1.4.1        
+[37] hms_0.5.3        digest_0.6.25    stringi_1.4.6    grid_4.0.0      
+[41] rprojroot_1.3-2  cli_2.0.2        tools_4.0.0      magrittr_1.5    
+[45] crayon_1.3.4     whisker_0.4      pkgconfig_2.0.3  ellipsis_0.3.0  
+[49] xml2_1.3.2       reprex_0.3.0     lubridate_1.7.8  rstudioapi_0.11 
+[53] assertthat_0.2.1 rmarkdown_2.1    httr_1.4.1       R6_2.4.1        
+[57] nlme_3.1-147     git2r_0.27.1     compiler_4.0.0  </code></pre>
 </div>
 </div>
 </div>

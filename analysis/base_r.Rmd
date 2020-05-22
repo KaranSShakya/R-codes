@@ -32,13 +32,11 @@ Even distribution between ranges. Example: 3 equal division between 1 and 10.
 y.divide <- seq(1,10, length.out = 3)
 y.divide
 ```
+
 ***
 
-
-
-
-
 ### Monte Carlo Simulations 
+#### Discrete
 Monte Carlo simulations model the probability of different outcomes by repeating a random process a large enough number of times that the results are similar to what would be observed if the process were repeated forever.
 First, create an box with data. This can be done through **rep** (2 red, 3 blue balls:
 ```{r eval=T, echo=T}
@@ -52,6 +50,33 @@ events <- replicate(B, sample(beads, 1))    # draw 1 bead, B times
 tab <- table(events)    # make a table of outcome counts
 prop.table(tab)    # view table of outcome proportio
 ```
+#### Continuous
+Generating simulated height data using normal distribution.
+```{r eval=T, echo=T}
+x <- heights %>% filter(sex=="Male") %>% pull(height)
+n <- length(x)
+avg <- mean(x)
+s <- sd(x)
+simulated_heights <- rnorm(n, avg, s)
+```
+The **sumulated_heights** is built from the length, mena, and sd. The plot of this is as follows. Important to note that this is built from the assumption of normal distribution:
+```{r eval=T, echo=T}
+data.frame(simulated_heights = simulated_heights) %>%
+    ggplot(aes(simulated_heights)) +
+    geom_histogram(color="black", binwidth = 2)
+```
+Example, running a monte carlo simulation to find out the probablity of people over 7 feet (answer: *0.0214*). Running the simulation 10,000 times (B):
+```{r eval=T, echo=T}
+set.seed(3233)
+B <- 10000
+tallest <- replicate(B, {
+    simulated_data <- rnorm(800, avg, s)    # generate 800 normally distributed random heights
+    max(simulated_data)    # determine the tallest height
+})
+mean(tallest >= 7*12) #7*12 = 84 inches, which is 7 feet. 
+```
+Important to note the **set.seed()** function allows us to control the random. Without this function, the answer would be different because you cannot control the random variability. But with set.seed() you will have the same answer every time.
+
 ***
 
 ### Mean / Sd
