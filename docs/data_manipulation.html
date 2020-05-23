@@ -503,16 +503,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestreeaddf41ad01555396effec30bc3b4a79cc752630ctargetblankaddf41aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/addf41ad01555396effec30bc3b4a79cc752630c" target="_blank">addf41a</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree9c630f21dd894a801546e0b4b3f4734f22037de3targetblank9c630f2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/9c630f21dd894a801546e0b4b3f4734f22037de3" target="_blank">9c630f2</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestreeaddf41ad01555396effec30bc3b4a79cc752630ctargetblankaddf41aa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree9c630f21dd894a801546e0b4b3f4734f22037de3targetblank9c630f2a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/addf41ad01555396effec30bc3b4a79cc752630c" target="_blank">addf41a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/9c630f21dd894a801546e0b4b3f4734f22037de3" target="_blank">9c630f2</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -563,6 +563,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/9c630f21dd894a801546e0b4b3f4734f22037de3/analysis/data_manipulation.Rmd" target="_blank">9c630f2</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-23
+</td>
+<td>
+download online file
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/KaranSShakya/R-codes/9c630f21dd894a801546e0b4b3f4734f22037de3/docs/data_manipulation.html" target="_blank">9c630f2</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-23
+</td>
+<td>
+download online file
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -731,6 +765,25 @@ GIT to R-Studio commits
 dat &lt;- read_csv(url)</code></pre>
 <p>To download the file we can use: (or an alternative is to simply write.excel or write.csv).</p>
 <pre class="r"><code>download.file(url, tmp_filename)</code></pre>
+<hr />
+</div>
+<div id="web-scrapping" class="section level3">
+<h3>Web Scrapping</h3>
+<p>If there isnt a csv/excel file to download, we can still access the data online and convert it into a dataframe. This is done from the <strong>rvest</strong> package, but is inbuilt in <strong>tidyverse</strong>. First, save the url page into an object in R <em>url</em>.</p>
+<pre class="r"><code>url &lt;- &quot;https://en.wikipedia.org/wiki/Murder_in_the_United_States_by_state&quot;
+h &lt;- read_html(url)</code></pre>
+<p>If the HTML pages are divided into tables, you can extract it:</p>
+<pre class="r"><code>tab &lt;- h %&gt;% 
+  html_nodes(&quot;table&quot;)
+tab &lt;- tab[[2]] #selecting the second node: which has the data.
+
+tab &lt;- tab %&gt;% 
+  html_table #finally a data with columns and rows</code></pre>
+<p>Set up coloumns names (makes sure it aligns with the data):</p>
+<pre class="r"><code>tab &lt;- tab %&gt;% 
+  setNames(c(&quot;state&quot;, &quot;population&quot;, &quot;total&quot;, &quot;murders&quot;, &quot;gun_murders&quot;, &quot;gun_ownership&quot;, &quot;total_rate&quot;, &quot;murder_rate&quot;, &quot;gun_murder_rate&quot;))
+tab.data &lt;- data.frame(tab) #data frame you can work with</code></pre>
+<hr />
 </div>
 <div id="numeric-character" class="section level3">
 <h3>Numeric / Character</h3>
@@ -793,26 +846,27 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] readxl_1.3.1    forcats_0.5.0   stringr_1.4.0   dplyr_0.8.5    
- [5] purrr_0.3.4     readr_1.3.1     tidyr_1.0.3     tibble_3.0.1   
- [9] ggplot2_3.3.0   tidyverse_1.3.0 workflowr_1.6.2
+ [1] rvest_0.3.5     xml2_1.3.2      readxl_1.3.1    forcats_0.5.0  
+ [5] stringr_1.4.0   dplyr_0.8.5     purrr_0.3.4     readr_1.3.1    
+ [9] tidyr_1.0.3     tibble_3.0.1    ggplot2_3.3.0   tidyverse_1.3.0
+[13] workflowr_1.6.2
 
 loaded via a namespace (and not attached):
  [1] tidyselect_1.1.0 xfun_0.13        haven_2.2.0      lattice_0.20-41 
  [5] colorspace_1.4-1 vctrs_0.3.0      generics_0.0.2   htmltools_0.4.0 
  [9] yaml_2.2.1       utf8_1.1.4       rlang_0.4.6      later_1.0.0     
 [13] pillar_1.4.4     withr_2.2.0      glue_1.4.1       DBI_1.1.0       
-[17] dbplyr_1.4.3     modelr_0.1.7     lifecycle_0.2.0  munsell_0.5.0   
-[21] gtable_0.3.0     cellranger_1.1.0 rvest_0.3.5      evaluate_0.14   
+[17] selectr_0.4-2    dbplyr_1.4.3     modelr_0.1.7     lifecycle_0.2.0 
+[21] munsell_0.5.0    gtable_0.3.0     cellranger_1.1.0 evaluate_0.14   
 [25] knitr_1.28       httpuv_1.5.2     curl_4.3         fansi_0.4.1     
 [29] broom_0.5.6      Rcpp_1.0.4.6     promises_1.1.0   backports_1.1.6 
 [33] scales_1.1.1     jsonlite_1.6.1   fs_1.4.1         hms_0.5.3       
 [37] digest_0.6.25    stringi_1.4.6    grid_4.0.0       rprojroot_1.3-2 
 [41] cli_2.0.2        tools_4.0.0      magrittr_1.5     crayon_1.3.4    
-[45] whisker_0.4      pkgconfig_2.0.3  ellipsis_0.3.0   xml2_1.3.2      
-[49] reprex_0.3.0     lubridate_1.7.8  rstudioapi_0.11  assertthat_0.2.1
-[53] rmarkdown_2.1    httr_1.4.1       R6_2.4.1         nlme_3.1-147    
-[57] git2r_0.27.1     compiler_4.0.0  </code></pre>
+[45] whisker_0.4      pkgconfig_2.0.3  ellipsis_0.3.0   reprex_0.3.0    
+[49] lubridate_1.7.8  rstudioapi_0.11  assertthat_0.2.1 rmarkdown_2.1   
+[53] httr_1.4.1       R6_2.4.1         nlme_3.1-147     git2r_0.27.1    
+[57] compiler_4.0.0  </code></pre>
 </div>
 </div>
 

@@ -14,6 +14,7 @@ editor_options:
 library(tidyverse)
 library(readxl)
 library(readr)
+library(rvest)
 ```
 
 ### Download Data - Online
@@ -26,6 +27,30 @@ To download the file we can use: (or an alternative is to simply write.excel or 
 ```{r eval=F, echo=T}
 download.file(url, tmp_filename)
 ```
+***
+
+### Web Scrapping
+If there isnt a csv/excel file to download, we can still access the data online and convert it into a dataframe. This is done from the **rvest** package, but is inbuilt in **tidyverse**. First, save the url page into an object in R *url*.
+```{r eval=T, echo=T}
+url <- "https://en.wikipedia.org/wiki/Murder_in_the_United_States_by_state"
+h <- read_html(url)
+```
+If the HTML pages are divided into tables, you can extract it:
+```{r eval=T, echo=T}
+tab <- h %>% 
+  html_nodes("table")
+tab <- tab[[2]] #selecting the second node: which has the data.
+
+tab <- tab %>% 
+  html_table #finally a data with columns and rows
+```
+Set up coloumns names (makes sure it aligns with the data):
+```{r eval=T, echo=T}
+tab <- tab %>% 
+  setNames(c("state", "population", "total", "murders", "gun_murders", "gun_ownership", "total_rate", "murder_rate", "gun_murder_rate"))
+tab.data <- data.frame(tab) #data frame you can work with
+```
+***
 
 ### Numeric / Character ###
 If x is character and y is numeric, and you want to reverse both these: 
