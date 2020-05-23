@@ -16,7 +16,17 @@ library(readxl)
 library(readr)
 ```
 
-***
+### Download Data - Online
+To use data readily online. You need the **readr** package which reads csv files.
+```{r eval=T, echo=T, warning=F, message=F}
+url <- "https://raw.githubusercontent.com/rafalab/dslabs/master/inst/extdata/murders.csv"
+dat <- read_csv(url)
+```
+To download the file we can use: (or an alternative is to simply write.excel or write.csv).
+```{r eval=F, echo=T}
+download.file(url, tmp_filename)
+```
+
 ### Numeric / Character ###
 If x is character and y is numeric, and you want to reverse both these: 
 ```{r eval=F, echo=T}
