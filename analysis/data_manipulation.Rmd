@@ -15,6 +15,7 @@ library(tidyverse)
 library(readxl)
 library(readr)
 library(rvest)
+library(pdftools)
 ```
 
 ### Download Data - Online
@@ -52,6 +53,72 @@ tab.data <- data.frame(tab) #data frame you can work with
 ```
 ***
 
+### Data from PDF
+Sometimes important data are only in the form of a PDF. We can still use R to extract data from this. This is the test pdf page we use - [link](https://www.pnas.org/content/suppl/2015/09/16/1510159112.DCSupplemental/pnas.201510159SI.pdf). We need the package **pdftools**.
+```{r eval=T, echo=T, results=F}
+temp_file <- tempfile() #code to create a unique name.
+url <- "http://www.pnas.org/content/suppl/2015/09/16/1510159112.DCSupplemental/pnas.201510159SI.pdf" #url from which to download the table
+download.file(url, temp_file) #downloading the file and giving it a temp name
+txt <- pdf_text(temp_file) #converting the url into text value in R
+file.remove(temp_file)
+```
+Now we look closely into the **txt** file to isolate our table. It is all about finding a pattern to isolate from.
+```{r eval=T, echo=T}
+raw.data <- txt[2] #our table was in the 2nd text.
+raw.data1 <- str_split(raw.data, "\n") #each line in the table was seperated by "\n"
+raw.data2 <- raw.data1[[1]] #isolating the section we need
+
+table.1 <- raw.data2[3]
+table.2 <- raw.data2[4]
+```
+Focusing on *table.1* (column names)
+```{r eval=T, echo=T}
+table.1 <- table.1 %>%
+  str_trim() %>%
+  str_replace_all(",\\s.", "") %>%
+  str_split("\\s{2,}", simplify = TRUE)
+table.1 #we have the column names
+```
+Focusing on *table.2* (more columns)
+```{r eval=T, echo=T}
+table.2 <- table.2 %>%
+  str_trim() %>%
+  str_split("\\s+", simplify = TRUE)
+table.2
+```
+We can combine both these to form a column for our data:
+```{r eval=T, echo=T}
+tmp_names <- str_c(rep(table.1, each = 3), table.2[-1], sep = "_")
+the_names <- c(table.2[1], tmp_names) %>%
+  str_to_lower() %>%
+  str_replace_all("\\s", "_")
+the_names
+```
+Finally combining all this with the data:
+```{r eval=T, echo=T}
+new_research_funding_rates <- raw.data2[6:14] %>%
+  str_trim %>%
+  str_split("\\s{2,}", simplify = TRUE) %>%
+  data.frame(stringsAsFactors = FALSE) %>%
+  setNames(the_names) %>%
+  mutate_at(-1, parse_number) #this is a new data.frame!
+```
+***
+
+### Removing Commas
+Creating example data frame. Columns with commas are always chracter.
+```{r eval=T, echo=T}
+comma <- data.frame(c("1,233", "1,000,000"), c(1233, 1000000))
+names(comma) <- c("Incorrect", "Correct")
+comma
+```
+**parse_number** is a direct function that deals with commas. There are more parse functions.
+```{r eval=T, echo=T}
+comma$Incorrect <- parse_number(comma$Incorrect)
+comma
+```
+***
+
 ### Numeric / Character ###
 If x is character and y is numeric, and you want to reverse both these: 
 ```{r eval=F, echo=T}
@@ -76,6 +143,14 @@ long
 ### Column Name ###
 ```{r eval=F, echo=T}
 names(data)[1] <- "New_name"
+```
+***
+
+
+### NA's
+#### Counting NA's in a Column
+```{r eval=F, echo=T}
+sum(is.na(tab.data$murders))
 ```
 ***
 

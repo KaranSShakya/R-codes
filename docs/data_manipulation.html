@@ -412,7 +412,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-05-23
+<strong>Last updated:</strong> 2020-05-24
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -503,16 +503,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree9c630f21dd894a801546e0b4b3f4734f22037de3targetblank9c630f2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/9c630f21dd894a801546e0b4b3f4734f22037de3" target="_blank">9c630f2</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestreecd2754d4cdeb0402b1656e6045d6209a2307b35ftargetblankcd2754da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/cd2754d4cdeb0402b1656e6045d6209a2307b35f" target="_blank">cd2754d</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree9c630f21dd894a801546e0b4b3f4734f22037de3targetblank9c630f2a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestreecd2754d4cdeb0402b1656e6045d6209a2307b35ftargetblankcd2754da" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/9c630f21dd894a801546e0b4b3f4734f22037de3" target="_blank">9c630f2</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/cd2754d4cdeb0402b1656e6045d6209a2307b35f" target="_blank">cd2754d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -563,6 +563,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/cd2754d4cdeb0402b1656e6045d6209a2307b35f/analysis/data_manipulation.Rmd" target="_blank">cd2754d</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-23
+</td>
+<td>
+web scrapping - base_r
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/KaranSShakya/R-codes/cd2754d4cdeb0402b1656e6045d6209a2307b35f/docs/data_manipulation.html" target="_blank">cd2754d</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-23
+</td>
+<td>
+web scrapping - base_r
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -785,6 +819,74 @@ tab &lt;- tab %&gt;%
 tab.data &lt;- data.frame(tab) #data frame you can work with</code></pre>
 <hr />
 </div>
+<div id="data-from-pdf" class="section level3">
+<h3>Data from PDF</h3>
+<p>Sometimes important data are only in the form of a PDF. We can still use R to extract data from this. This is the test pdf page we use - <a href="https://www.pnas.org/content/suppl/2015/09/16/1510159112.DCSupplemental/pnas.201510159SI.pdf">link</a>. We need the package <strong>pdftools</strong>.</p>
+<pre class="r"><code>temp_file &lt;- tempfile() #code to create a unique name.
+url &lt;- &quot;http://www.pnas.org/content/suppl/2015/09/16/1510159112.DCSupplemental/pnas.201510159SI.pdf&quot; #url from which to download the table
+download.file(url, temp_file) #downloading the file and giving it a temp name
+txt &lt;- pdf_text(temp_file) #converting the url into text value in R
+file.remove(temp_file)</code></pre>
+<p>Now we look closely into the <strong>txt</strong> file to isolate our table. It is all about finding a pattern to isolate from.</p>
+<pre class="r"><code>raw.data &lt;- txt[2] #our table was in the 2nd text.
+raw.data1 &lt;- str_split(raw.data, &quot;\n&quot;) #each line in the table was seperated by &quot;\n&quot;
+raw.data2 &lt;- raw.data1[[1]] #isolating the section we need
+
+table.1 &lt;- raw.data2[3]
+table.2 &lt;- raw.data2[4]</code></pre>
+<p>Focusing on <em>table.1</em> (column names)</p>
+<pre class="r"><code>table.1 &lt;- table.1 %&gt;%
+  str_trim() %&gt;%
+  str_replace_all(&quot;,\\s.&quot;, &quot;&quot;) %&gt;%
+  str_split(&quot;\\s{2,}&quot;, simplify = TRUE)
+table.1 #we have the column names</code></pre>
+<pre><code>     [,1]           [,2]     [,3]           
+[1,] &quot;Applications&quot; &quot;Awards&quot; &quot;Success rates&quot;</code></pre>
+<p>Focusing on <em>table.2</em> (more columns)</p>
+<pre class="r"><code>table.2 &lt;- table.2 %&gt;%
+  str_trim() %&gt;%
+  str_split(&quot;\\s+&quot;, simplify = TRUE)
+table.2</code></pre>
+<pre><code>     [,1]         [,2]    [,3]  [,4]    [,5]    [,6]  [,7]    [,8]    [,9] 
+[1,] &quot;Discipline&quot; &quot;Total&quot; &quot;Men&quot; &quot;Women&quot; &quot;Total&quot; &quot;Men&quot; &quot;Women&quot; &quot;Total&quot; &quot;Men&quot;
+     [,10]  
+[1,] &quot;Women&quot;</code></pre>
+<p>We can combine both these to form a column for our data:</p>
+<pre class="r"><code>tmp_names &lt;- str_c(rep(table.1, each = 3), table.2[-1], sep = &quot;_&quot;)
+the_names &lt;- c(table.2[1], tmp_names) %&gt;%
+  str_to_lower() %&gt;%
+  str_replace_all(&quot;\\s&quot;, &quot;_&quot;)
+the_names</code></pre>
+<pre><code> [1] &quot;discipline&quot;          &quot;applications_total&quot;  &quot;applications_men&quot;   
+ [4] &quot;applications_women&quot;  &quot;awards_total&quot;        &quot;awards_men&quot;         
+ [7] &quot;awards_women&quot;        &quot;success_rates_total&quot; &quot;success_rates_men&quot;  
+[10] &quot;success_rates_women&quot;</code></pre>
+<p>Finally combining all this with the data:</p>
+<pre class="r"><code>new_research_funding_rates &lt;- raw.data2[6:14] %&gt;%
+  str_trim %&gt;%
+  str_split(&quot;\\s{2,}&quot;, simplify = TRUE) %&gt;%
+  data.frame(stringsAsFactors = FALSE) %&gt;%
+  setNames(the_names) %&gt;%
+  mutate_at(-1, parse_number) #this is a new data.frame!</code></pre>
+<hr />
+</div>
+<div id="removing-commas" class="section level3">
+<h3>Removing Commas</h3>
+<p>Creating example data frame. Columns with commas are always chracter.</p>
+<pre class="r"><code>comma &lt;- data.frame(c(&quot;1,233&quot;, &quot;1,000,000&quot;), c(1233, 1000000))
+names(comma) &lt;- c(&quot;Incorrect&quot;, &quot;Correct&quot;)
+comma</code></pre>
+<pre><code>  Incorrect Correct
+1     1,233    1233
+2 1,000,000 1000000</code></pre>
+<p><strong>parse_number</strong> is a direct function that deals with commas. There are more parse functions.</p>
+<pre class="r"><code>comma$Incorrect &lt;- parse_number(comma$Incorrect)
+comma</code></pre>
+<pre><code>  Incorrect Correct
+1      1233    1233
+2   1000000 1000000</code></pre>
+<hr />
+</div>
 <div id="numeric-character" class="section level3">
 <h3>Numeric / Character</h3>
 <p>If x is character and y is numeric, and you want to reverse both these:</p>
@@ -823,6 +925,13 @@ long</code></pre>
 <h3>Column Name</h3>
 <pre class="r"><code>names(data)[1] &lt;- &quot;New_name&quot;</code></pre>
 <hr />
+</div>
+<div id="nas" class="section level3">
+<h3>NA’s</h3>
+<div id="counting-nas-in-a-column" class="section level4">
+<h4>Counting NA’s in a Column</h4>
+<pre class="r"><code>sum(is.na(tab.data$murders))</code></pre>
+<hr />
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -846,27 +955,28 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] rvest_0.3.5     xml2_1.3.2      readxl_1.3.1    forcats_0.5.0  
- [5] stringr_1.4.0   dplyr_0.8.5     purrr_0.3.4     readr_1.3.1    
- [9] tidyr_1.0.3     tibble_3.0.1    ggplot2_3.3.0   tidyverse_1.3.0
-[13] workflowr_1.6.2
+ [1] pdftools_2.3.1  rvest_0.3.5     xml2_1.3.2      readxl_1.3.1   
+ [5] forcats_0.5.0   stringr_1.4.0   dplyr_0.8.5     purrr_0.3.4    
+ [9] readr_1.3.1     tidyr_1.0.3     tibble_3.0.1    ggplot2_3.3.0  
+[13] tidyverse_1.3.0 workflowr_1.6.2
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.0 xfun_0.13        haven_2.2.0      lattice_0.20-41 
- [5] colorspace_1.4-1 vctrs_0.3.0      generics_0.0.2   htmltools_0.4.0 
- [9] yaml_2.2.1       utf8_1.1.4       rlang_0.4.6      later_1.0.0     
-[13] pillar_1.4.4     withr_2.2.0      glue_1.4.1       DBI_1.1.0       
-[17] selectr_0.4-2    dbplyr_1.4.3     modelr_0.1.7     lifecycle_0.2.0 
-[21] munsell_0.5.0    gtable_0.3.0     cellranger_1.1.0 evaluate_0.14   
-[25] knitr_1.28       httpuv_1.5.2     curl_4.3         fansi_0.4.1     
-[29] broom_0.5.6      Rcpp_1.0.4.6     promises_1.1.0   backports_1.1.6 
-[33] scales_1.1.1     jsonlite_1.6.1   fs_1.4.1         hms_0.5.3       
-[37] digest_0.6.25    stringi_1.4.6    grid_4.0.0       rprojroot_1.3-2 
-[41] cli_2.0.2        tools_4.0.0      magrittr_1.5     crayon_1.3.4    
-[45] whisker_0.4      pkgconfig_2.0.3  ellipsis_0.3.0   reprex_0.3.0    
-[49] lubridate_1.7.8  rstudioapi_0.11  assertthat_0.2.1 rmarkdown_2.1   
-[53] httr_1.4.1       R6_2.4.1         nlme_3.1-147     git2r_0.27.1    
-[57] compiler_4.0.0  </code></pre>
+ [1] Rcpp_1.0.4.6     lubridate_1.7.8  lattice_0.20-41  assertthat_0.2.1
+ [5] rprojroot_1.3-2  digest_0.6.25    utf8_1.1.4       R6_2.4.1        
+ [9] cellranger_1.1.0 backports_1.1.6  reprex_0.3.0     evaluate_0.14   
+[13] httr_1.4.1       pillar_1.4.4     rlang_0.4.6      curl_4.3        
+[17] rstudioapi_0.11  whisker_0.4      rmarkdown_2.1    qpdf_1.1        
+[21] selectr_0.4-2    munsell_0.5.0    broom_0.5.6      compiler_4.0.0  
+[25] httpuv_1.5.2     modelr_0.1.7     xfun_0.13        pkgconfig_2.0.3 
+[29] askpass_1.1      htmltools_0.4.0  tidyselect_1.1.0 fansi_0.4.1     
+[33] crayon_1.3.4     dbplyr_1.4.3     withr_2.2.0      later_1.0.0     
+[37] grid_4.0.0       nlme_3.1-147     jsonlite_1.6.1   gtable_0.3.0    
+[41] lifecycle_0.2.0  DBI_1.1.0        git2r_0.27.1     magrittr_1.5    
+[45] scales_1.1.1     cli_2.0.2        stringi_1.4.6    fs_1.4.1        
+[49] promises_1.1.0   ellipsis_0.3.0   generics_0.0.2   vctrs_0.3.0     
+[53] tools_4.0.0      glue_1.4.1       hms_0.5.3        yaml_2.2.1      
+[57] colorspace_1.4-1 knitr_1.28       haven_2.2.0     </code></pre>
+</div>
 </div>
 </div>
 
