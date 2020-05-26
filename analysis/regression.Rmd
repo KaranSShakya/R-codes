@@ -8,11 +8,25 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r eval=T, echo=F, message=F, warning=F}
+library(tidyverse)
+library(HistData) #Historical data is found from this package
+
+data("GaltonFamilies")
+galton_height <- GaltonFamilies
+```
+
 [Home](index.html)
 
-***
+### Correlation
+One of the first things to do before performing a regression is correlation. Correlation is between **-1** to **1**.
+```{r eval=T, echo=T}
+r <- galton_height %>% 
+  summarize(r = cor(father, childHeight))
+r
+```
 
-### Panel Regression ###
+### Panel Regression 
 Library: stargazer, knitr, sandwitch, lmtest, AER, forecast, plm. These contain more than necessary packages required for panel regression.
 The first step is to make your data frame into a panel form.
 ```{r eval=F, echo=T}
@@ -40,7 +54,7 @@ phtest(fixed.effect, random.effect)
 
 ***
 
-### ARIMA Forecast ###
+### ARIMA Forecast 
 First convert the dataset into time-series form. We can see this through the plot().
 ```{r eval=F, echo=T}
 temp.ts <- ts(temp, start=1998, end=2017, frequency = 1)
