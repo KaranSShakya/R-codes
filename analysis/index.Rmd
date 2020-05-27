@@ -18,5 +18,6 @@ editor_options:
 7. [GIT](git.html)
 
 ***
+a. [Linear Regression](linear_regression.html)
 
-This is a cheatsheet for R, built using past project and online courses.  
+This is a cheatsheet for R, built using past projects and online courses.  
