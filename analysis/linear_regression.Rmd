@@ -16,6 +16,7 @@ library(tidyverse)
 library(ggplot2)
 library(readxl)
 library(broom)
+library(gridExtra)
 
 cricket <- read_excel("data/cricket_temp.xlsx")
 names(cricket)[1] <- "sound"
@@ -29,7 +30,7 @@ names(cricket)[2] <- "temp"
 
 * correlation coefficients are sensitive to outliers
 
-* R = cor(x,y). R-squared = (correlation)^2.
+$R = cor(x,y). R^2 = (correlation)^2$
 
 This is the correlation code for a table (x=temp, y=sound).
 ```{r eval=T, echo=T}
@@ -48,7 +49,7 @@ ggplot(cricket, aes(x=temp, y=sound))+
 ### 2. Residuals
 Residuals are the difference between observed and predicted values. To visualize this we have used the **broom** package to test the residuals. 
 
-* Residuals (errors) = observed - predicted
+$Residuals (errors) = observed - predicted$
 
 ```{r eval=T, echo=T}
 lm <- lm(sound~temp, data=cricket)
@@ -59,11 +60,42 @@ ggplot(lm.table, aes(x=.fitted, y=.resid))+
   geom_point(alpha=0.5)
 
 ### 3. Least Square Lines
+Best way to have a linear regression line is to minimize the sum of squared residuals.
 
+$Slope(b_1 = SD_y/SD_x * R)$
 
+```{r eval=T, echo=T}
+lm.sd <- lm.table %>% 
+  summarize(sound.sd=sd(sound), temp.sd=sd(temp), cor=cor(sound, temp)) %>% 
+  mutate(slope=(sound.sd/temp.sd)*cor) #Slope = 0.211
+```
+When we look at the **lm** model, the slope is also 0.211.
+```{r eval=F, echo=T}
+summary(lm)
+```
 
+### 4. Conditions for Linear Regression
+**a.** Linearity (scatterplot + residual plot - residuals needs to be random)
 
+**b.** Nearly normal residuals (histogram of residuals or QQ residual plot)
 
+**c.** Constant variability (residual plot)
+
+[Link](https://gallery.shinyapps.io/slr_diag/) for interactive regression diagnostic test. 
+
+```{r eval=T, echo=T}
+a <- ggplot(lm.table, aes(x=.fitted, y=.resid))+
+  geom_point()+
+  geom_hline(yintercept = 0, linetype="dashed", color="red")+
+  labs(title="Residuals vs Fitted Values", x="Fitted Values", y="Residuals")
+b <- ggplot(lm.table, aes(x=.resid))+
+  geom_density()+
+  labs(title="Histogram of residuals", x="Residuals") #geom_density can also be added
+c <- ggplot(lm.table, aes(sample=.resid))+
+  stat_qq()+
+  stat_qq_line()
+grid.arrange(a, b, c, ncol=3)
+```
 
 
 ***

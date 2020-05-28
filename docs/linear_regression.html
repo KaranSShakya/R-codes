@@ -436,7 +436,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -503,16 +503,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree04333d85fe2a66ab5f196cbd08adfa818f17181ctargetblank04333d8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/04333d85fe2a66ab5f196cbd08adfa818f17181c" target="_blank">04333d8</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree8ee3b5de93564e415169424d7d699db26e7a5c19targetblank8ee3b5da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/8ee3b5de93564e415169424d7d699db26e7a5c19" target="_blank">8ee3b5d</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree04333d85fe2a66ab5f196cbd08adfa818f17181ctargetblank04333d8a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree8ee3b5de93564e415169424d7d699db26e7a5c19targetblank8ee3b5da" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/04333d85fe2a66ab5f196cbd08adfa818f17181c" target="_blank">04333d8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/8ee3b5de93564e415169424d7d699db26e7a5c19" target="_blank">8ee3b5d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -523,12 +523,8 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
-Untracked files:
-    Untracked:  analysis/linear_regression.Rmd
-    Untracked:  data/cricket_temp.xlsx
-
 Unstaged changes:
-    Modified:   analysis/index.Rmd
+    Modified:   analysis/linear_regression.Rmd
 
 </code></pre>
 <p>
@@ -541,9 +537,69 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/linear_regression.Rmd</code>) and HTML (<code>docs/linear_regression.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/8ee3b5de93564e415169424d7d699db26e7a5c19/analysis/linear_regression.Rmd" target="_blank">8ee3b5d</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-27
+</td>
+<td>
+duke’s linear regression site
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/KaranSShakya/R-codes/8ee3b5de93564e415169424d7d699db26e7a5c19/docs/linear_regression.html" target="_blank">8ee3b5d</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-27
+</td>
+<td>
+duke’s linear regression site
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -557,8 +613,8 @@ There are no past versions. Publish this analysis with <code>wflow_publish()</co
 <ul>
 <li><p>correlation is the strength of linear association</p></li>
 <li><p>correlation coefficients are sensitive to outliers</p></li>
-<li><p>R = cor(x,y). R-squared = (correlation)^2.</p></li>
 </ul>
+<p><span class="math inline">\(R = cor(x,y). R^2 = (correlation)^2\)</span></p>
 <p>This is the correlation code for a table (x=temp, y=sound).</p>
 <pre class="r"><code>cor &lt;- cricket %&gt;% 
   summarise(r=cor(sound, temp)) %&gt;% 
@@ -570,19 +626,80 @@ cor</code></pre>
   geom_point(alpha=0.5)+
   geom_smooth(method = &quot;lm&quot;, se=F)</code></pre>
 <p><img src="figure/linear_regression.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/8ee3b5de93564e415169424d7d699db26e7a5c19/docs/figure/linear_regression.Rmd/unnamed-chunk-3-1.png" target="_blank">8ee3b5d</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-27
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="residuals" class="section level3">
 <h3>2. Residuals</h3>
 <p>Residuals are the difference between observed and predicted values. To visualize this we have used the <strong>broom</strong> package to test the residuals.</p>
-<ul>
-<li>Residuals (errors) = observed - predicted</li>
-</ul>
+<p><span class="math inline">\(Residuals (errors) = observed - predicted\)</span></p>
 <pre class="r"><code>lm &lt;- lm(sound~temp, data=cricket)
 lm.table &lt;- augment(lm) #can visualize all the residuals in a table form</code></pre>
 <p>ggplot(lm.table, aes(x=.fitted, y=.resid))+ geom_point(alpha=0.5)</p>
 </div>
 <div id="least-square-lines" class="section level3">
 <h3>3. Least Square Lines</h3>
+<p>Best way to have a linear regression line is to minimize the sum of squared residuals.</p>
+<p><span class="math inline">\(Slope(b_1 = SD_y/SD_x * R)\)</span></p>
+<pre class="r"><code>lm.sd &lt;- lm.table %&gt;% 
+  summarize(sound.sd=sd(sound), temp.sd=sd(temp), cor=cor(sound, temp)) %&gt;% 
+  mutate(slope=(sound.sd/temp.sd)*cor) #Slope = 0.211</code></pre>
+<p>When we look at the <strong>lm</strong> model, the slope is also 0.211.</p>
+<pre class="r"><code>summary(lm)</code></pre>
+</div>
+<div id="conditions-for-linear-regression" class="section level3">
+<h3>4. Conditions for Linear Regression</h3>
+<p><strong>a.</strong> Linearity (scatterplot + residual plot - residuals needs to be random)</p>
+<p><strong>b.</strong> Nearly normal residuals (histogram of residuals or QQ residual plot)</p>
+<p><strong>c.</strong> Constant variability (residual plot)</p>
+<p><a href="https://gallery.shinyapps.io/slr_diag/">Link</a> for interactive regression diagnostic test.</p>
+<pre class="r"><code>a &lt;- ggplot(lm.table, aes(x=.fitted, y=.resid))+
+  geom_point()+
+  geom_hline(yintercept = 0, linetype=&quot;dashed&quot;, color=&quot;red&quot;)+
+  labs(title=&quot;Residuals vs Fitted Values&quot;, x=&quot;Fitted Values&quot;, y=&quot;Residuals&quot;)
+b &lt;- ggplot(lm.table, aes(x=.resid))+
+  geom_density()+
+  labs(title=&quot;Histogram of residuals&quot;, x=&quot;Residuals&quot;) #geom_density can also be added
+c &lt;- ggplot(lm.table, aes(sample=.resid))+
+  stat_qq()+
+  stat_qq_line()
+grid.arrange(a, b, c, ncol=3)</code></pre>
+<p><img src="figure/linear_regression.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
 <hr />
 <br>
 <p>
@@ -607,26 +724,27 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] broom_0.5.6     readxl_1.3.1    forcats_0.5.0   stringr_1.4.0  
- [5] dplyr_0.8.5     purrr_0.3.4     readr_1.3.1     tidyr_1.0.3    
- [9] tibble_3.0.1    ggplot2_3.3.0   tidyverse_1.3.0 workflowr_1.6.2
+ [1] gridExtra_2.3   broom_0.5.6     readxl_1.3.1    forcats_0.5.0  
+ [5] stringr_1.4.0   dplyr_0.8.5     purrr_0.3.4     readr_1.3.1    
+ [9] tidyr_1.0.3     tibble_3.0.1    ggplot2_3.3.0   tidyverse_1.3.0
+[13] workflowr_1.6.2
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.0 xfun_0.13        splines_4.0.0    haven_2.2.0     
- [5] lattice_0.20-41  colorspace_1.4-1 vctrs_0.3.0      generics_0.0.2  
- [9] htmltools_0.4.0  mgcv_1.8-31      yaml_2.2.1       rlang_0.4.6     
-[13] later_1.0.0      pillar_1.4.4     withr_2.2.0      glue_1.4.1      
-[17] DBI_1.1.0        dbplyr_1.4.3     modelr_0.1.7     lifecycle_0.2.0 
-[21] munsell_0.5.0    gtable_0.3.0     cellranger_1.1.0 rvest_0.3.5     
-[25] evaluate_0.14    labeling_0.3     knitr_1.28       httpuv_1.5.2    
-[29] fansi_0.4.1      Rcpp_1.0.4.6     promises_1.1.0   backports_1.1.6 
-[33] scales_1.1.1     jsonlite_1.6.1   farver_2.0.3     fs_1.4.1        
-[37] hms_0.5.3        digest_0.6.25    stringi_1.4.6    grid_4.0.0      
-[41] rprojroot_1.3-2  cli_2.0.2        tools_4.0.0      magrittr_1.5    
-[45] crayon_1.3.4     pkgconfig_2.0.3  Matrix_1.2-18    ellipsis_0.3.0  
-[49] xml2_1.3.2       reprex_0.3.0     lubridate_1.7.8  rstudioapi_0.11 
-[53] assertthat_0.2.1 rmarkdown_2.1    httr_1.4.1       R6_2.4.1        
-[57] nlme_3.1-147     git2r_0.27.1     compiler_4.0.0  </code></pre>
+ [1] Rcpp_1.0.4.6     lubridate_1.7.8  lattice_0.20-41  assertthat_0.2.1
+ [5] rprojroot_1.3-2  digest_0.6.25    R6_2.4.1         cellranger_1.1.0
+ [9] backports_1.1.6  reprex_0.3.0     evaluate_0.14    httr_1.4.1      
+[13] pillar_1.4.4     rlang_0.4.6      rstudioapi_0.11  whisker_0.4     
+[17] Matrix_1.2-18    rmarkdown_2.1    labeling_0.3     splines_4.0.0   
+[21] munsell_0.5.0    compiler_4.0.0   httpuv_1.5.2     modelr_0.1.7    
+[25] xfun_0.13        pkgconfig_2.0.3  mgcv_1.8-31      htmltools_0.4.0 
+[29] tidyselect_1.1.0 fansi_0.4.1      crayon_1.3.4     dbplyr_1.4.3    
+[33] withr_2.2.0      later_1.0.0      grid_4.0.0       nlme_3.1-147    
+[37] jsonlite_1.6.1   gtable_0.3.0     lifecycle_0.2.0  DBI_1.1.0       
+[41] git2r_0.27.1     magrittr_1.5     scales_1.1.1     cli_2.0.2       
+[45] stringi_1.4.6    farver_2.0.3     fs_1.4.1         promises_1.1.0  
+[49] xml2_1.3.2       ellipsis_0.3.0   generics_0.0.2   vctrs_0.3.0     
+[53] tools_4.0.0      glue_1.4.1       hms_0.5.3        yaml_2.2.1      
+[57] colorspace_1.4-1 rvest_0.3.5      knitr_1.28       haven_2.2.0     </code></pre>
 </div>
 </div>
 </div>
