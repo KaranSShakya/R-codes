@@ -412,7 +412,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-05-27
+<strong>Last updated:</strong> 2020-05-28
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -503,16 +503,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree8ee3b5de93564e415169424d7d699db26e7a5c19targetblank8ee3b5da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/8ee3b5de93564e415169424d7d699db26e7a5c19" target="_blank">8ee3b5d</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree11e02b8792cc1ea6de5d1b9a143ca3e4d00e4c12targetblank11e02b8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/KaranSShakya/R-codes/tree/11e02b8792cc1ea6de5d1b9a143ca3e4d00e4c12" target="_blank">11e02b8</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree8ee3b5de93564e415169424d7d699db26e7a5c19targetblank8ee3b5da" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomKaranSShakyaRcodestree11e02b8792cc1ea6de5d1b9a143ca3e4d00e4c12targetblank11e02b8a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/8ee3b5de93564e415169424d7d699db26e7a5c19" target="_blank">8ee3b5d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/KaranSShakya/R-codes/tree/11e02b8792cc1ea6de5d1b9a143ca3e4d00e4c12" target="_blank">11e02b8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -563,6 +563,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/11e02b8792cc1ea6de5d1b9a143ca3e4d00e4c12/analysis/linear_regression.Rmd" target="_blank">11e02b8</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-27
+</td>
+<td>
+linear reg. - first
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/KaranSShakya/R-codes/11e02b8792cc1ea6de5d1b9a143ca3e4d00e4c12/docs/linear_regression.html" target="_blank">11e02b8</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-27
+</td>
+<td>
+linear reg. - first
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -700,6 +734,72 @@ c &lt;- ggplot(lm.table, aes(sample=.resid))+
   stat_qq_line()
 grid.arrange(a, b, c, ncol=3)</code></pre>
 <p><img src="figure/linear_regression.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
+Past versions of unnamed-chunk-7-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-7-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/KaranSShakya/R-codes/blob/11e02b8792cc1ea6de5d1b9a143ca3e4d00e4c12/docs/figure/linear_regression.Rmd/unnamed-chunk-7-1.png" target="_blank">11e02b8</a>
+</td>
+<td>
+KaranSShakya
+</td>
+<td>
+2020-05-27
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="inference" class="section level3">
+<h3>5. Inference</h3>
+<ul>
+<li><p>Hypothesis testing on the slope to identify if the explanatory variable is a significant predictor.</p></li>
+<li><p>Null hyp: H<sub>0</sub> = 0 (no relationship). Alt hyp: H<sub>1</sub> not 0 (yes relationship).</p></li>
+</ul>
+<p><span class="math inline">\(t-stat = (pointestimate - null value) / SE\)</span></p>
+<pre class="r"><code>summary(lm)</code></pre>
+<pre><code>
+Call:
+lm(formula = sound ~ temp, data = cricket)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.56009 -0.57930  0.03129  0.59020  1.53259 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -0.30914    3.10858  -0.099 0.922300    
+temp         0.21192    0.03871   5.475 0.000107 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.9715 on 13 degrees of freedom
+Multiple R-squared:  0.6975,    Adjusted R-squared:  0.6742 
+F-statistic: 29.97 on 1 and 13 DF,  p-value: 0.0001067</code></pre>
+<p><strong>t value</strong> can be foudn by: (0.211 - 0) / 0.039 = 5.4</p>
+<p>For 95% <strong>confidence interval (CI)</strong>: 0.211 +- <em>2.06</em> x 0.0387 = (0.13, 0.29)</p>
 <hr />
 <br>
 <p>
