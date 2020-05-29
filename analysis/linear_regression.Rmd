@@ -122,4 +122,10 @@ anova(lm)
 
 $R^2 = SS(reg)/SS(total) = 28.287/30.5$
 
+### 7. Multi-Variable Linear Regression
+
+* R-square will always increase with every inclusion.
+
+* For multiple variables, **adjusted R-square** is important. 
+
 ***
