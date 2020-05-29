@@ -112,6 +112,14 @@ summary(lm)
 
 For 95% **confidence interval (CI)**: 0.211 +- *2.06* x 0.0387 = (0.13, 0.29)
 
+### 6. ANOVA
+Analysis of Variance
+```{r eval=T, echo=T}
+anova(lm)
+```
 
+* F-Value: F-Statistics: MeanSQ (temp) / MeanSQ (residuals)
+
+$R^2 = SS(reg)/SS(total) = 28.287/30.5$
 
 ***
