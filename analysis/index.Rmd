@@ -20,4 +20,19 @@ editor_options:
 ***
 a. [Linear Regression](linear_regression.html)
 
-This is a cheatsheet for R, built using past projects and online courses.  
+This is a cheatsheet for R, built using past projects and online courses.
+
+***
+
+### Citing R
+
+To cite R:
+
+`R Core Team (2013). R: A language and environment for statistical
+computing. R Foundation for Statistical Computing, Vienna, Austria. URL http://www.R-project.org/.`
+
+To cite R-Studio:
+
+`RStudio Team (2020). RStudio: Integrated Development for R. RStudio, PBC, Boston, MA URL http://www.rstudio.com/.`
+
+
