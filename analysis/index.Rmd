@@ -28,11 +28,11 @@ This is a cheatsheet for R, built using past projects and online courses.
 
 To cite R:
 
-`R Core Team (2013). R: A language and environment for statistical
-computing. R Foundation for Statistical Computing, Vienna, Austria. URL http://www.R-project.org/.`
+R Core Team (2013). R: A language and environment for statistical
+computing. R Foundation for Statistical Computing, Vienna, Austria. URL http://www.R-project.org/.
 
 To cite R-Studio:
 
-`RStudio Team (2020). RStudio: Integrated Development for R. RStudio, PBC, Boston, MA URL http://www.rstudio.com/.`
+RStudio Team (2020). RStudio: Integrated Development for R. RStudio, PBC, Boston, MA URL http://www.rstudio.com/.
 
 
